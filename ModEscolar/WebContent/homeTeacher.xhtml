@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="templateTeacher.xhtml">
+
+	<ui:define name="centro">
+	
+	<h:form>
+
+			<p:growl id="messages" />
+
+
+
+			<p:menubar>
+
+				<f:facet name="opt">
+					
+					<p:commandButton type="button" value="inincio" icon="ui-icon-extlink" style="margin-left:10px" />
+				
+				</f:facet>
+				
+				
+
+				<f:facet name="options">
+					<p:outputLabel value="BEM VINDO: " style="margin-left:15px" />
+					<p:outputLabel value="#{loginBean.username}"
+						style="margin-left:10px" />
+					
+				
+					<p:commandButton type="button" value="Sair" icon="ui-icon-extlink"  onclick="sair()"/>
+				</f:facet>
+				
+				
+				
+				
+				
+			</p:menubar>
+
+
+
+		</h:form>
+
+
+		<h:panelGrid columns="4" cellpadding="60"
+			style="width: 100%">
+
+
+			<p:graphicImage value="/img/botao_equipes.png" onclick="loadEquipesData()"
+				style="cursor:pointer" >
+			</p:graphicImage>
+
+			<p:graphicImage value="/img/botao_registro-de-aulas.png" onclick="loadRegistroAulasData()"
+				style="cursor:pointer">
+			</p:graphicImage>
+				
+
+			<p:graphicImage value="/img/botao_frequencia.png" onclick="loadFrequenciaTeacher()"
+				style="cursor:pointer">
+			</p:graphicImage>
+
+			
+
+
+		</h:panelGrid>
+		
+
+	
+
+	</ui:define>
+
+
+
+</ui:composition>
+
+
+
+</html>

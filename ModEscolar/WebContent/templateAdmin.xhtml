@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+
+	<script type="text/javascript">
+	
+	     var session = '#{loginBean.session}'
+	    
+	     if(session == ""){
+	    	 
+	    	
+	    	
+	    	location.href = "index.jsf"
+	    	
+	    }
+	     
+	     function sair() {
+				location.href = "index.jsf"
+				
+			}
+	
+	    function homeAdm(){
+	    	location.href = "homeAdmin.jsf"
+	    }
+		
+		function students() {
+			location.href = "newStudents.jsf"
+		}
+
+		function user() {
+			location.href = "newUser.jsf"
+		}
+
+		function loadPhoto() {
+			location.href = "uploadPhotoStudent.jsf"
+		}
+
+		function loadStudentsList() {
+			location.href = "listStudentData.jsf"
+		}
+		
+		
+		function loadDisciplineList() {
+			location.href = "listDisciplineData.jsf"
+		}
+		
+		function createDiscipline() {
+			location.href = "newDiscipline.jsf"
+		}
+		
+		function createTeacher() {
+			location.href = "newTeacher.jsf"
+		}
+		
+		function loadTeacher() {
+			location.href = "listTeacherData.jsf"
+		}
+		
+		
+		function loadUsers() {
+			location.href = "listUsersData.jsf"
+		}
+		
+		function loadMaterialUpload() {
+			location.href = "uploadMaterialDeApoioAdmin.jsf"
+		}
+		
+		function loadMaterialDownload() {
+			location.href = "donwloadMaterialDeApoioAdmin.jsf"
+		}
+		
+		
+		function getNotas(){
+			location.href = "listTeacherToNotas.jsf"
+		}
+		
+        function getRegistro(){
+        	location.href = "listTeacherToRegistro.jsf"
+		}
+        
+        function getFrequencia(){
+        	location.href = "listTeacherToFrequencia.jsf"
+		}
+        
+        function getEquipes(){
+        	location.href = "listTeacherToEquipes.jsf"
+		}
+		
+		 function getRelatorios(){
+        	location.href = "relatoriosAdm.jsf"
+		}
+		
+	</script>
+
+
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
+		<meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
+		<title>Controle Escolar</title>
+	</f:facet>
+
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/css/default.css" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/css/syntaxhighlighter/syntaxhighlighter.css" />
+
+	<style type="text/css">
+.ui-layout-north {
+	z-index: 20 !important;
+	overflow: visible !important;;
+}
+
+.ui-layout-north .ui-layout-unit-content {
+	overflow: visible !important;
+}
+</style>
+
+	<style type="text/css">
+body {
+	background-color: #eeeeee;
+	font-size: 12px
+}
+</style>
+</h:head>
+<h:body>
+
+  
+
+
+	<p:ajaxStatus
+		style="width:64px;height:64px;position:fixed;right:5px;bottom:5px">
+		<f:facet name="start">
+			<p:graphicImage value="/img/loading.gif" />
+		</f:facet>
+
+		<f:facet name="complete">
+			<h:outputText value="" />
+		</f:facet>
+	</p:ajaxStatus>
+	
+	<p:idleMonitor timeout="50000">
+        <p:ajax event="idle" listener="#{idleMonitorView.onIdle}"  />
+        <p:ajax event="active" listener="#{idleMonitorView.onActive}" />
+    </p:idleMonitor>
+
+	<p:layout fullPage="true">
+
+
+
+		<p:layoutUnit position="north" size="100"  >
+			<ui:insert name="topo">
+			
+				<h:graphicImage url="img/topo.jpg" width="100%" height="100%" style="cursor:pointer" title="Clique para voltar pagina inicial" onclick="homeAdm()" />
+			
+			</ui:insert>
+			
+		</p:layoutUnit>
+
+
+
+		<p:layoutUnit position="west" size="300"
+			header="Painel do Administrador">
+
+
+			<ui:insert name="menu">
+			
+				<h:form>
+
+					<p:growl id="messages" autoUpdate="true" />
+
+					<p:panelMenu style="width:280px">
+						<p:submenu label="Cadastros">
+							<p:menuitem value="Usuário" icon="ui-icon-disk" onclick="PF('dlg2').show()" />
+							<p:menuitem value="Aluno" icon="ui-icon-disk" onclick="students()" />
+							<p:menuitem value="Professor" icon="ui-icon-disk" onclick="createTeacher()"/>
+							<p:menuitem value="Disciplina" icon="ui-icon-disk" onclick="PF('dlg_disciplina_new').show()" />
+							
+						</p:submenu>
+						<p:submenu label="Relatórios">
+							<p:menuitem value="Relatórios" icon="ui-icon-disk" onclick="getRelatorios()" />
+							
+						</p:submenu>
+						<p:separator />
+						<p:submenu label="Material de Apoio">
+							<p:menuitem value="Adicionar Material" icon="ui-icon-signal" onclick="loadMaterialUpload()" />
+							<p:menuitem value="Pesquisar Material" icon="ui-icon-signal" onclick="loadMaterialDownload()" />
+						</p:submenu>
+					</p:panelMenu>
+
+				</h:form>
+			</ui:insert>
+		</p:layoutUnit>
+		<p:layoutUnit position="center" >
+			<ui:insert name="centro">
+                        O que estiver aqui será substituido!
+            </ui:insert>
+		</p:layoutUnit>
+
+
+
+		<p:layoutUnit id="bottom" position="south" size="30">
+
+			<h3
+				style='text-transform: uppercase;text-align:center; font-size: 12px; color: #0c6869; margin: 0 auto;'> © 2014-2014. Todos os direitos reservados </h3>
+
+
+
+		</p:layoutUnit>
+	</p:layout>
+
+</h:body>
+</html>

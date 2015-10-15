@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<title></title>
+
+
+
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/css/default.css" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/css/principal.css" />
+
+</h:head>
+<h:body>
+
+	<h:form id="form_upload">
+
+		<p:dialog header="Adicionar Disciplina" widgetVar="carDialog2"
+			resizable="true" showEffect="explode" hideEffect="explode">
+
+
+			<h:panelGrid columns="2">
+
+
+				<h:outputText value="Turma(s): " />
+				<p:selectOneMenu value="#{listDisciplineTeacherBean.turma}">
+
+					<p:ajax event="change"
+						listener="#{listDisciplineTeacherBean.selectionChangedBimestre}"
+						update=":form_upload:turmas" />
+
+					<f:selectItem itemLabel="Selecione" itemValue=""
+						noSelectionOption="true" />
+					<f:selectItem itemLabel="A" itemValue="A" />
+					<f:selectItem itemLabel="B" itemValue="B" />
+					<f:selectItem itemLabel="C" itemValue="C" />
+					<f:selectItem itemLabel="D" itemValue="D" />
+					<f:selectItem itemLabel="E" itemValue="E" />
+					<f:selectItem itemLabel="F" itemValue="F" />
+					<f:selectItem itemLabel="G" itemValue="G" />
+					<f:selectItem itemLabel="H" itemValue="H" />
+					<f:selectItem itemLabel="I" itemValue="I" />
+					<f:selectItem itemLabel="J" itemValue="J" />
+					<f:selectItem itemLabel="K" itemValue="K" />
+					<f:selectItem itemLabel="L" itemValue="L" />
+					<f:selectItem itemLabel="M" itemValue="M" />
+					<f:selectItem itemLabel="N" itemValue="N" />
+					<f:selectItem itemLabel="O" itemValue="O" />
+					<f:selectItem itemLabel="P" itemValue="P" />
+					<f:selectItem itemLabel="Q" itemValue="Q" />
+					<f:selectItem itemLabel="R" itemValue="R" />
+					<f:selectItem itemLabel="S" itemValue="S" />
+					<f:selectItem itemLabel="T" itemValue="T" />
+					<f:selectItem itemLabel="W" itemValue="W" />
+					<f:selectItem itemLabel="Y" itemValue="Y" />
+					<f:selectItem itemLabel="X" itemValue="X" />
+					<f:selectItem itemLabel="Z" itemValue="Z" />
+				</p:selectOneMenu>
+
+
+
+
+
+			</h:panelGrid>
+
+			<h:panelGrid columns="1" columnClasses="label, value">
+
+				<p:selectOneListbox id="turmas" value="#{listDisciplineTeacherBean.turmaRemover}">
+					<f:selectItems value="#{listDisciplineTeacherBean.turmasSeleciondas}"></f:selectItems>
+				</p:selectOneListbox>
+
+				<p:commandButton value="Remover Turma"
+					actionListener="#{listDisciplineTeacherBean.removerTurma}"
+					update=":form_upload:turmas"></p:commandButton>
+				<h:outputLabel
+					value="Deseja Relacionar esta Disciplina ao Professor?"></h:outputLabel>
+
+
+
+
+			</h:panelGrid>
+			<p:separator></p:separator>
+			<p:commandButton value="SIM" actionListener="#{listDisciplineTeacherBean.teacherToDiscipline}"
+				oncomplete="loadTeacher()" >
+
+			</p:commandButton>
+
+			<p:commandButton value="NAO" oncomplete="carDialog.hide()"></p:commandButton>
+
+
+
+
+
+
+
+		</p:dialog>
+
+
+
+
+
+	</h:form>
+
+</h:body>
+</html>

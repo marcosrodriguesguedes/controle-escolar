@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="templateAdmin.xhtml">
+
+	<ui:define name="centro">
+
+
+
+		<h:form>
+
+			<p:growl id="messages" />
+
+			<p:menubar>
+				<p:submenu label="Menu" icon="ui-icon-document">
+
+					<p:menuitem value="Inicio" onclick="homeAdm()" />
+					<p:separator />
+					<p:menuitem value="Sair" onclick="" />
+
+
+				</p:submenu>
+
+				<f:facet name="options">
+					<p:outputLabel value="BEM VINDO: " style="margin-right:15px" />
+					<p:outputLabel value="#{loginBean.username}"
+						style="margin-right:10px" />
+					<p:commandButton type="button" value="Sair" icon="ui-icon-extlink"
+						onclick="sair()" />
+				</f:facet>
+			</p:menubar>
+
+
+
+		</h:form>
+
+		<h:form id="form_list_discipline">
+
+			<p:dataTable var="disc" value="#{listEquipesBean.equipes}"
+				rowKey="#{disc.id}" paginator="true" rows="20"
+				selection="#{listEquipesBean.selectedEquipe}" selectionMode="single"
+				filteredValue="#{listEquipesBean.filteredEquipe}" id="carsTable">
+
+				<p:ajax event="rowSelect" update=":form_list_discipline:display"
+					oncomplete="carDialog.show()" listener="#{listEquipesBean.getStudentEquipe}" />
+
+				<f:facet name="header">  
+             Equipes Cadastradas  
+                </f:facet>
+
+				<p:column headerText="Descrição" sortBy="descricao"
+					filterBy="descricao" id="descricao">  
+            #{disc.descricao}  
+        </p:column>
+
+				<p:column headerText="Disciplina" sortBy="nomeDisciplina"
+					filterBy="nomeDisciplina" id="nomeDisciplina">  
+            #{disc.nomeDisciplina}  
+        </p:column>
+
+				<p:column headerText="Grau" sortBy="grau" filterBy="grau" id="grau">  
+            #{disc.grau}  
+        
+        </p:column>
+
+				<p:column headerText="Serie" sortBy="serie" filterBy="serie"
+					id="serie">  
+            #{disc.serie}  
+        </p:column>
+
+				<p:column headerText="turma" sortBy="turma" filterBy="turma"
+					id="turma">  
+            #{disc.turma}  
+        </p:column>
+
+				<p:column headerText="Bimestre" sortBy="dataRegistro"
+					filterBy="bimestre" id="bimestre">  
+            #{disc.bimestre}  
+        </p:column>
+
+			</p:dataTable>
+
+			<p:dialog header="Equipes Detalhes" widgetVar="carDialog"
+				resizable="false"  showEffect="explode"
+				hideEffect="explode">
+
+				<p:panel id="display">
+
+
+					<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"
+						columnClasses="label, column">
+
+
+						<p:selectOneListbox id="scroll"  var="p" filter="true"
+							filterMatchMode="contains">
+							<f:selectItems value="#{listEquipesBean.studentsEquipe}" var="player"
+								itemLabel="#{player.name}" itemValue="#{Student}" />
+
+							<p:column>
+								<p:graphicImage value="/fotos/#{p.pictureUrl}" width="50"
+									height="60" /> 
+							</p:column>
+
+							<p:column>
+                				#{p.name} 
+                         </p:column>
+
+						</p:selectOneListbox>
+						
+						
+						<p:commandButton value="Remover Aluno" actionListener="#{listEquipesBean.deledeStudentEquipe}"></p:commandButton>
+
+						<h:outputText value="Nota Equipe :"></h:outputText>
+						
+						<p:inputText size="3" maxlength="3"   value="#{listEquipesBean.selectedEquipe.nota}">
+						
+						</p:inputText>
+
+						<p:commandButton value="Atualizar Equipe" actionListener="#{listEquipesBean.updateEquipe}"></p:commandButton>
+						
+						<p:commandButton value="Deletar Equipe" actionListener="#{listEquipesBean.deleteEquipe}"></p:commandButton>
+						
+						<p:commandButton value="Relatório Equipes" actionListener="#{listEquipesBean.gerarRelatorioEquipe}" ajax="false"></p:commandButton>
+
+
+					</h:panelGrid>
+
+				</p:panel>
+				
+				
+
+			</p:dialog>
+
+		</h:form>
+	</ui:define>
+
+
+
+</ui:composition>
+
+
+
+</html>

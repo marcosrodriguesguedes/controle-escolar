@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="templateTeacher.xhtml">
+
+	<ui:define name="centro">
+
+
+		<h:form id="form">
+			<p:growl id="msg" showDetail="true" life="3000" />
+
+			<p:panel header="Cadastro de Equipes">
+
+				<h:panelGrid columns="3" cellpadding="5">
+
+
+
+					<p:pickList id="pojoPickList" value="#{equipesBean.students}"
+						var="student" effect="bounce" itemValue="#{student}"
+						itemLabel="#{student.name}" showSourceControls="true"
+						showTargetControls="true" showCheckbox="true"
+						showSourceFilter="true" showTargetFilter="true"
+						filterMatchMode="contains">
+
+						<f:facet name="sourceCaption">Todos</f:facet>
+						<f:facet name="targetCaption">Selecionados</f:facet>
+
+						<p:ajax event="transfer" listener="#{equipesBean.onTransfer}"
+							update="msg" />
+
+						<p:column style="width:25%">
+							<p:graphicImage value="/fotos/#{student.pictureUrl}" width="30"
+								height="40" />
+						</p:column>
+
+						<p:column style="width:75%;">  
+                       #{student.name}  
+                    </p:column>
+
+					</p:pickList>
+
+
+					<h:outputText value="Bimestre :"></h:outputText>
+
+					<p:selectOneMenu value="#{equipesBean.bimestre}">
+
+                        <f:selectItem itemLabel="1º" itemValue="1" />
+						<f:selectItem itemLabel="2º" itemValue="2" />
+						<f:selectItem itemLabel="3º" itemValue="3" />
+						<f:selectItem itemLabel="4º" itemValue="4" />
+
+					</p:selectOneMenu>
+
+
+				</h:panelGrid>
+
+
+				<h:panelGrid columns="2" cellpadding="5">
+
+
+					<h:outputText value="Descrição: " />
+					<p:inputTextarea rows="6" cols="50"
+						value="#{equipesBean.descricao}" />
+
+
+
+					<h:outputText value="Turma :"></h:outputText>
+
+					<p:selectOneMenu value="#{equipesBean.turma}" label="Turma">
+
+						<p:ajax event="change" update=":form:pojoPickList"
+							listener="#{equipesBean.subjectSelectionChanged}" />
+
+						<f:selectItem itemLabel="TURMA" itemValue="" />
+						<f:selectItem itemLabel="A" itemValue="A" />
+						<f:selectItem itemLabel="B" itemValue="B" />
+						<f:selectItem itemLabel="C" itemValue="C" />
+						<f:selectItem itemLabel="D" itemValue="D" />
+						<f:selectItem itemLabel="E" itemValue="E" />
+						<f:selectItem itemLabel="F" itemValue="F" />
+						<f:selectItem itemLabel="G" itemValue="G" />
+
+					</p:selectOneMenu>
+
+
+					<p:commandButton value="Salvar Equipe"
+						actionListener="#{equipesBean.createEquipe}"
+						style='background:#009899; color:#ffffff' oncomplete="loadEquipesData()"></p:commandButton>
+
+
+				</h:panelGrid>
+
+
+
+
+			</p:panel>
+
+
+		</h:form>
+
+
+
+
+
+	</ui:define>
+
+
+
+</ui:composition>
+
+
+
+</html>

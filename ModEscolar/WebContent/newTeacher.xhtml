@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="templateAdmin.xhtml">
+
+	<ui:define name="centro">
+
+		<h:form>
+
+			<p:growl id="growl" sticky="true" showDetail="true" />
+
+			<p:wizard backLabel="Voltar" nextLabel="Avançar">
+
+				<p:tab id="pessoal" title="Pessoal">
+
+					<p:panel header="Dados Pessoais">
+
+						<h:messages errorClass="error" />
+
+						<h:panelGrid columns="2" columnClasses="label, value">
+
+							<h:outputText value="Nome Completo: *" />
+							<p:inputText required="true" label="nome_professor" size="60"
+								value="#{createNewTeacherBean.nome}" validatorMessage="Nome Completo só pode conter letras" >
+								<f:validateRegex pattern="^[a-zA-ZÁÉÍÓÚÂÊÎÔÛáéíóúâêîôûÇçãõÃÕ\s]+$" />
+							</p:inputText>
+							<h:outputText value="Pai: *" />
+							<p:inputText required="true" label="pai_professor" size="60"
+								value="#{createNewTeacherBean.pai}" validatorMessage="Nome Pai só pode conter letras" >
+								<f:validateRegex pattern="^[a-zA-ZÁÉÍÓÚÂÊÎÔÛáéíóúâêîôûÇçãõÃÕ\s]+$" />
+							</p:inputText>
+
+							<h:outputText value="Mãe: *" />
+							<p:inputText required="true" label="mae_professor" size="60"
+								value="#{createNewTeacherBean.mae}" validatorMessage="Nome Mãe só pode conter letras" >
+								<f:validateRegex pattern="^[a-zA-ZÁÉÍÓÚÂÊÎÔÛáéíóúâêîôûÇçãõÃÕ\s]+$" />
+							</p:inputText>
+
+						</h:panelGrid>
+
+						<h:panelGrid columns="4" columnClasses="label, value"
+							styleClass="grid">
+							<h:outputText value="Data Nascimento: *" />
+
+							<p:inputMask locale="pt" pattern="dd/MM/yyyy" required="true"
+								label="Data Nascimento" showButtonPanel="true" navigator="true"
+								id="ptCal" value="#{createNewTeacherBean.birthday}" mask="99/99/9999" />
+
+							<h:outputText value="Sexo: " />
+							<p:selectOneMenu value="#{createNewTeacherBean.sexo}">
+								<f:selectItem itemLabel="Selecione" itemValue="" />
+								<f:selectItem itemLabel="Masculino" itemValue="3" />
+								<f:selectItem itemLabel="Feminino" itemValue="10" />
+
+							</p:selectOneMenu>
+
+							<h:outputText value="Telefone:" />
+							<p:inputText label="telefone_professor"
+								value="#{createNewTeacherBean.telefone}" />
+
+							<h:outputText value="CPF:" />
+							<p:inputMask required="true" label="cpf_professor"
+								value="#{createNewTeacherBean.cpf}" mask="999.999.999-99"/>
+
+							<h:outputText value="PIS/PASEP:" />
+							<p:inputText label="pis_pasep_professor"
+								value="#{createNewTeacherBean.pis_pasep}" />
+
+							<h:outputText value="Título de Eleitor:" />
+							<p:inputText label="titulo_professor"
+								value="#{createNewTeacherBean.titulo}" />
+
+							<h:outputText value="RG:" />
+							<p:inputText value="#{createNewTeacherBean.rg}" />
+
+							<h:outputText value="Órgão Emissor:" />
+							<p:inputText label="orgao_rg_professor"
+								value="#{createNewTeacherBean.orgao_rg}" />
+
+
+							<h:outputText value="Banco:" />
+							<p:inputText label="banco_professor"
+								value="#{createNewTeacherBean.banco}" />
+
+
+							<h:outputText value="Agência" />
+							<p:inputText label="agencia_professor"
+								value="#{createNewTeacherBean.agencia}" />
+
+
+							<h:outputText value="Conta:" />
+							<p:inputText label="conta_professor"
+								value="#{createNewTeacherBean.conta}" />
+
+							<h:outputText value="Endereço:" />
+							<p:inputText required="true" label="endereco_professor"
+								value="#{createNewTeacherBean.endereco}" />
+
+
+							<h:outputText value="Bairro:" />
+							<p:inputText label="bairro_professor"
+								value="#{createNewTeacherBean.bairro}" />
+
+							<h:outputText value="Complemento:" />
+							<p:inputText label="complemento_professor"
+								value="#{createNewTeacherBean.complemento}" />
+
+							<h:outputText value="CEP:" />
+							<p:inputText label="cep_professor"
+								value="#{createNewTeacherBean.cep}" />
+
+
+							<h:outputText value="Cidade:" />
+							<p:inputText label="cidade_professor"
+								value="#{createNewTeacherBean.cidade}" />
+
+							<h:outputText value="UF: " />
+							<p:selectOneMenu value="#{createNewTeacherBean.ufNaturality}">
+								<f:selectItem itemLabel="Selecione" itemValue="" />
+								<f:selectItem itemLabel="PB" itemValue="PB" />
+								<f:selectItem itemLabel="AL" itemValue="AL" />
+								<f:selectItem itemLabel="AP" itemValue="AP" />
+								<f:selectItem itemLabel="AM" itemValue="AM" />
+								<f:selectItem itemLabel="BA" itemValue="BA" />
+								<f:selectItem itemLabel="CE" itemValue="CE" />
+								<f:selectItem itemLabel="ES" itemValue="ES" />
+								<f:selectItem itemLabel="GO" itemValue="GO" />
+								<f:selectItem itemLabel="MT" itemValue="MT" />
+								<f:selectItem itemLabel="MS" itemValue="MS" />
+								<f:selectItem itemLabel="MG" itemValue="MG" />
+								<f:selectItem itemLabel="PA" itemValue="PA" />
+								<f:selectItem itemLabel="PR" itemValue="PR" />
+								<f:selectItem itemLabel="PE" itemValue="PE" />
+								<f:selectItem itemLabel="PI" itemValue="PI" />
+								<f:selectItem itemLabel="RJ" itemValue="RJ" />
+								<f:selectItem itemLabel="RN" itemValue="RN" />
+								<f:selectItem itemLabel="RS" itemValue="RS" />
+								<f:selectItem itemLabel="RO" itemValue="RS" />
+								<f:selectItem itemLabel="RR" itemValue="RS" />
+								<f:selectItem itemLabel="SC" itemValue="SC" />
+								<f:selectItem itemLabel="SP" itemValue="SP" />
+								<f:selectItem itemLabel="SE" itemValue="SE" />
+								<f:selectItem itemLabel="TO" itemValue="TO" />
+
+							</p:selectOneMenu>
+							<h:outputText value="E-Mail:" />
+							<p:inputText label="email_professor"
+								value="#{createNewTeacherBean.email}" />
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+
+				<p:tab id="address" title="Dados Funcionais">
+					<p:panel header="Dados Funcionais">
+
+						<h:messages errorClass="error" />
+
+						<h:panelGrid columns="2" columnClasses="label, value">
+
+							<h:outputText value="Lotação:" />
+							<p:inputText label="lotacao_professor"
+								value="#{createNewTeacherBean.lotacao}" />
+
+							<h:outputText value="Matrícula:" />
+							<p:inputText label="matricula_professor"
+								value="#{createNewTeacherBean.matricula}" />
+
+							<h:outputText value="Cidade:" />
+							<p:inputText label="cidadefuncional_professor"
+								value="#{createNewTeacherBean.cidadefuncional}" />
+
+
+							<h:outputText value="Data do Contrato:" />
+							<p:calendar locale="pt" pattern="dd/MM/yyyy" required="true"
+								label="Data Contrato" showButtonPanel="true" navigator="true"
+								id="ptCal2" value="#{createNewTeacherBean.dataContrato}" />
+
+
+							<h:outputText value="Data de Admissão:" />
+							<p:calendar locale="pt" pattern="dd/MM/yyyy" required="true"
+								label="Data Admissao" showButtonPanel="true" navigator="true"
+								id="ptCal3" value="#{createNewTeacherBean.dataAdmisao}" />
+								
+								
+							<p:commandButton value="Salvar"
+								actionListener="#{createNewTeacherBean.createTeacher}"
+								update="growl"  oncomplete="loadTeacher()">
+								
+								
+							
+						    </p:commandButton>	
+
+
+
+
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+
+				
+			</p:wizard>
+
+		</h:form>
+
+		<ui:include src="newDiscipline.xhtml">
+		
+		</ui:include>
+		
+		<ui:include src="newUser.xhtml">
+		
+		</ui:include>
+	</ui:define>
+
+
+
+</ui:composition>
+
+
+
+</html>

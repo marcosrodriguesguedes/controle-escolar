@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PrincipalFrenteHistorico" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="379" splitType="Stretch">
+			<image>
+				<reportElement x="18" y="0" width="57" height="35"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\marcosrg\\workspace\\ModEscolar\\src\\resources\\img\\marca_transparente.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="92" y="0" width="155" height="15"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[GOVERNO DA PARAIBA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="92" y="15" width="217" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SECRETARIA DE ESTADO DA EDUCAÇÃO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="375" y="0" width="163" height="15"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FICHA INDIVIDUAL DO ALUNO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="375" y="15" width="163" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ENSINO MÉDIO INOVADOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="62" width="57" height="126"/>
+				<textElement textAlignment="Center" rotation="Left"/>
+				<text><![CDATA[DADOS DO ESTABELECIMENTO DE ENSINO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="18" y="62" width="38" height="126"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="56" y="62" width="376" height="33"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="432" y="62" width="100" height="33"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="56" y="95" width="476" height="37"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="56" y="132" width="356" height="25"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="412" y="132" width="32" height="25"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="132" width="88" height="25"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="56" y="157" width="172" height="31"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="228" y="157" width="90" height="31"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="318" y="157" width="94" height="31"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="412" y="157" width="120" height="31"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="56" y="62" width="172" height="14"/>
+				<textElement/>
+				<text><![CDATA[ESTABELECIMENTO DE ENSINO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="432" y="62" width="29" height="14"/>
+				<textElement/>
+				<text><![CDATA[GRE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="56" y="95" width="155" height="14"/>
+				<textElement/>
+				<text><![CDATA[Endereço (Av./ Rua, N.º , Bairro):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="56" y="132" width="54" height="14"/>
+				<textElement/>
+				<text><![CDATA[Municipio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="413" y="132" width="31" height="14"/>
+				<textElement/>
+				<text><![CDATA[U.F.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="444" y="132" width="44" height="14"/>
+				<textElement/>
+				<text><![CDATA[Telefone]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

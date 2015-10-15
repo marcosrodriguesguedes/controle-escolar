@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="templateAdmin.xhtml">
+
+	<ui:define name="centro">
+	  <h:form id="form_list_discipline">
+
+			<p:dataTable var="teac" value="#{listDisciplineTeacherBean.teachers}"
+				rowKey="#{teac.id}" paginator="true" rows="20"
+				selection="#{listDisciplineTeacherBean.selectedTeacher}"
+				selectionMode="single"
+				filteredValue="#{listDisciplineTeacherBean.filteredTeacher}"
+				id="carsTable">
+
+				<p:ajax event="rowSelect" 
+					
+					listener="#{listDisciplineTeacherBean.getDisciplineTeacherToFrequencia}" />
+
+				<f:facet name="header">  
+                FREQUÊNCIA - Professores Cadastrados - Selecine um Professor.  
+                </f:facet>
+
+				<p:column headerText="Nome" sortBy="name" filterBy="name" id="name">  
+                   #{teac.name}  
+                </p:column>
+
+
+
+			</p:dataTable>
+
+		</h:form>
+	
+
+		
+
+	</ui:define>
+
+
+
+</ui:composition>
+
+
+
+</html>

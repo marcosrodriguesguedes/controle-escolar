@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="templateAdmin.xhtml">
+
+	<ui:define name="centro">
+	
+	
+
+
+
+		<h:form>
+
+			<p:growl id="messages" />
+
+
+
+			<p:menubar>
+			
+			<p:submenu label="Menu" icon="ui-icon-document">
+
+					
+					<p:menuitem value="Turmas" url="#" />
+					<p:separator />
+					<p:menuitem value="Outras" url="#" />
+
+
+			</p:submenu>
+
+				
+
+
+
+				<f:facet name="options">
+					<p:outputLabel value="BEM VINDO: " style="margin-left:15px" />
+					<p:outputLabel value="#{loginBean.username}"
+						style="margin-left:10px" />
+
+					<p:spacer height="20"></p:spacer>
+					<p:commandButton type="button" value="Sair" icon="ui-icon-extlink"  onclick="sair()"/>
+				</f:facet>
+
+
+
+
+
+			</p:menubar>
+
+
+
+		</h:form>
+
+
+		<h:panelGrid columns="4" cellpadding="50"
+			style="width: 100%" >
+
+
+			<p:graphicImage value="/img/botao_alunos.png" onclick="loadStudentsList()"
+				style="cursor:pointer"></p:graphicImage>
+
+			<p:graphicImage value="/img/botao_professor.png" onclick="loadTeacher()"
+				style="cursor:pointer"></p:graphicImage>
+
+
+			<p:graphicImage value="/img/botao_disciplinas.png"
+				onclick="loadDisciplineList()" style="cursor:pointer"></p:graphicImage>
+
+			<p:graphicImage value="/img/botao_usuarios.png" onclick="loadUsers()"
+				style="cursor:pointer"></p:graphicImage>
+
+			<p:graphicImage value="/img/botao_notas.png" onclick="getNotas()"
+				style="cursor:pointer"></p:graphicImage>
+
+			<p:graphicImage value="/img/botao_frequencia.png" onclick="getFrequencia()"
+				style="cursor:pointer"></p:graphicImage>
+
+			<p:graphicImage value="/img/botao_registro-de-aulas.png"
+				onclick="getRegistro()" style="cursor:pointer"></p:graphicImage>
+
+			<p:graphicImage value="/img/botao_equipes.png" onclick="getEquipes()"
+				style="cursor:pointer"></p:graphicImage>
+
+
+
+
+		</h:panelGrid>
+
+		<ui:include src="newDiscipline.xhtml"></ui:include>
+
+		<ui:include src="newUser.xhtml"></ui:include>
+
+		<ui:include src="downloadRelatorioAlunos.xhtml"></ui:include>
+		
+		<ui:include src="downloadRelatorioDisciplina.xhtml"></ui:include>
+		
+		<ui:include src="downloadRelatorioProfessor.xhtml"></ui:include>
+		
+		<ui:include src="reportRegistroDeAulas.xhtml"></ui:include>
+
+
+	</ui:define>
+
+
+
+</ui:composition>
+
+
+
+</html>

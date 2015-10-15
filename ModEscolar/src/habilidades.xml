@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<competencias>
+	<competencia selection="0" number="1" code="cht" description="Compreender os elementos culturais que constituem as identidades.">
+		<habilidade selection="0" code_competencia="1" number="-1" description=""/>
+		<habilidade selection="1" code_competencia="1" number="1" description="-Interpretar historicamente e/ou geograficamente fontes documentais acerca de aspectos da cultura."/>
+		<habilidade selection="2" code_competencia="1" number="2" description="Analisar a produção da memória pelas sociedades humanas."/>
+		<habilidade selection="3" code_competencia="1" number="3" description="Associar as manifestações culturais do presente aos seus processos históricos."/>
+		<habilidade selection="4" code_competencia="1" number="4" description="Comparar pontos de vista expressos em diferentes fontes sobre determinado aspecto da cultura."/>
+		<habilidade selection="5" code_competencia="1" number="5" description="Identificar as manifestações ou representações da diversidade do patrimônio cultural e artístico em diferentes sociedades."/>
+	</competencia>
+	<competencia selection="1" number="2" code="cht" description="Compreender as transformações dos espaços geográficos como produto das relações socioeconômicas e culturais de poder.">
+		<habilidade selection="0" code_competencia="2" number="-1" description=""/>
+		<habilidade selection="1" code_competencia="2" number="6" description="Interpretar diferentes representações gráficas e cartográficas dos espaços geográficos."/>
+		<habilidade selection="2" code_competencia="2" number="7" description="Identificar os significados histórico-geográficos das relações de poder entre as nações."/>
+		<habilidade selection="3" code_competencia="2" number="8" description="Analisar a ação dos estados nacionais no que se refere à dinâmica dos fluxos populacionais e no enfrentamento de problemas de ordem econômico-social."/>
+		<habilidade selection="4" code_competencia="2" number="9" description="Comparar o significado histórico-geográfico das organizações políticas e socioeconômicas em escala local, regional ou mundial."/>
+		<habilidade selection="5" code_competencia="2" number="10" description="Reconhecer a dinâmica da organização dos movimentos sociais e a importância da participação da coletividade na transformação da realidade histórico-geográfica."/>
+	</competencia>
+	<competencia selection="2" number="3" code="cht" description="Compreender a produção e o papel histórico das instituições sociais, políticas e econômicas, associando-as aos diferentes grupos, conflitos e movimentos sociais.">
+		<habilidade selection="0" code_competencia="3" description=""/>
+		<habilidade selection="1" code_competencia="3" description="Identificar registros de práticas de grupos sociais no tempo e no espaço."/>
+		<habilidade selection="2" code_competencia="3" description="Analisar o papel da justiça como instituição na organização das sociedades."/>
+		<habilidade selection="3" code_competencia="3" description="Analisar a atuação dos movimentos sociais que contribuíram para mudanças ou  rupturas em processos de disputa pelo poder."/>
+		<habilidade selection="4" code_competencia="3" description="Comparar diferentes pontos de vista, presentes em textos analíticos e interpretativos, sobre situação ou fatos de natureza histórico-geográfica acerca das instituições sociais, políticas e econômicas."/>
+		<habilidade selection="5" code_competencia="3" description="Avaliar criticamente conflitos culturais, sociais, políticos, econômicos ou ambientais ao longo da história."/>
+	</competencia>
+	<competencia selection="3" number="4" code="cht" description="Entender as transformações técnicas e tecnológicas e seu impacto nos processos de produção, no desenvolvimento do conhecimento e na vida social.">
+		<habilidade selection="0" code_competencia="4" number="-1" description=""/>
+		<habilidade selection="1" code_competencia="4" number="16" description="Identificar registros sobre o papel das técnicas e tecnologias na organização do trabalho e/ou da vida social."/>
+		<habilidade selection="2" code_competencia="4" number="17" description="Analisar fatores que explicam o impacto das novas tecnologias no processo de territorialização da produção."/>
+		<habilidade selection="3" code_competencia="4" number="18" description="Analisar diferentes processos de produção ou circulação de riquezas e suas implicações sócio-espaciais."/>
+		<habilidade selection="4" code_competencia="4" number="19" description="Reconhecer as transformações técnicas e tecnológicas que determinam as várias formas de uso e apropriação dos espaços rural e urbano."/>
+		<habilidade selection="5" code_competencia="4" number="20" description="Selecionar argumentos favoráveis ou contrários às modificações impostas pelas novas tecnologias à vida social e ao mundo do trabalho."/>
+	</competencia>
+	<competencia selection="4" number="5" code="cht" description="Utilizar os conhecimentos históricos para compreender e valorizar os fundamentos da cidadania e da democracia, favorecendo uma atuação consciente do indivíduo na sociedade.">
+		<habilidade selection="0" code_competencia="5" number="-1" description=""/>
+		<habilidade selection="1" code_competencia="5" number="21" description="Identificar o papel dos meios de comunicação na construção da vida social."/>
+		<habilidade selection="2" code_competencia="5" number="22" description="Analisar as lutas sociais e conquistas obtidas no que se refere às mudanças nas legislações ou nas políticas públicas."/>
+		<habilidade selection="3" code_competencia="5" number="23" description="Analisar a importância dos valores éticos na estruturação política das sociedades."/>
+		<habilidade selection="4" code_competencia="5" number="24" description="Relacionar cidadania e democracia na organização das sociedades."/>
+		<habilidade selection="5" code_competencia="5" number="25" description="Identificar estratégias que promovam formas de inclusão social."/>
+	</competencia>
+	<competencia selection="5" number="6" code="cht" description="Compreender a sociedade e a natureza, reconhecendo suas interações no espaço em diferentes contextos históricos e geográficos.">
+		<habilidade selection="0" code_competencia="6" number="-1" description=""/>
+		<habilidade selection="1" number="26" description="Identificar em fontes diversas o processo de ocupação dos meios físicos e as relações da vida humana com a paisagem."/>
+		<habilidade selection="2" number="27" description="Analisar de maneira crítica as interações da sociedade com o meio físico, levando em consideração aspectos históricos e(ou) geográficos."/>
+		<habilidade selection="3" number="28" description="Relacionar o uso das tecnologias com os impactos sócio-ambientais em diferentes contextos histórico-geográficos."/>
+		<habilidade selection="4" number="29" description="Reconhecer a função dos recursos naturais na produção do espaço geográfico, relacionando-os com as mudanças provocadas pelas ações humanas."/>
+		<habilidade selection="5" number="30" description="Avaliar as relações entre preservação e degradação da vida no planeta nas diferentes escalas."/>
+	</competencia>
+	<competencia selection="0" number="1" code="mt" description="Construir significados para os números naturais, inteiros, racionais e reais.">
+		<habilidade selection="0" number="-1" description=""/>
+		<habilidade selection="1" number="1" description="Reconhecer, no contexto social, diferentes significados e representações dos números e operações - naturais, inteiros, racionais ou reais."/>
+		<habilidade selection="2" number="2" description="Identificar padrões numéricos ou princípios de contagem."/>
+		<habilidade selection="3" number="3" description="Resolver situação-problema envolvendo conhecimentos numéricos."/>
+		<habilidade selection="4" number="4" description="Avaliar a razoabilidade de um resultado numérico na construção de argumentos sobre afirmações quantitativas."/>
+		<habilidade selection="5" number="5" description="Avaliar propostas de intervenção na realidade utilizando conhecimentos numéricos."/>
+	</competencia>
+	<competencia selection="1" number="2" code="mt" description="Utilizar o conhecimento geométrico para realizar a leitura e a representação da realidade e agir sobre ela.">
+		<habilidade selection="0" number="-1" description=""/>
+		<habilidade selection="1" number="6" description="Interpretar a localização e a movimentação de pessoas/objetos no espaço tridimensional e sua representação no espaço bidimensional."/>
+		<habilidade selection="2" number="7" description="Identificar características de figuras planas ou espaciais."/>
+		<habilidade selection="3" number="8" description="Resolver situação-problema que envolva conhecimentos geométricos de espaço e forma."/>
+		<habilidade selection="4" number="9" description="Utilizar conhecimentos geométricos de espaço e forma na seleção de argumentos propostos como solução de problemas do cotidiano."/>
+	</competencia>
+	<competencia selection="2" number="3" code="mt" description="Construir noções de grandezas e medidas para a compreensão da realidade e a solução de problemas do cotidiano.">
+		<habilidade selection="0" number="-1" description=""/>
+		<habilidade selection="1" number="10" description="Identificar relações entre grandezas e unidades de medida."/>
+		<habilidade selection="2" number="11" description="Utilizar a noção de escalas na leitura de representação de situação do cotidiano."/>
+		<habilidade selection="3" number="12" description="Resolver situação-problema que envolva medidas de grandezas."/>
+		<habilidade selection="4" number="13" description="Avaliar o resultado de uma medição na construção de um argumento consistente."/>
+		<habilidade selection="5" number="14" description="Avaliar proposta de intervenção na realidade utilizando conhecimentos geométricos relacionados a grandezas e medidas."/>
+	</competencia>
+	<competencia selection="3" number="4" code="mt" description="Construir noções de variação de grandezas para a compreensão da realidade e a solução de problemas do cotidiano.">
+		<habilidade selection="0" number="-1" description=""/>
+		<habilidade selection="1" number="15" description="Identificar a relação de dependência entre grandezas."/>
+		<habilidade selection="2" number="16" description="Resolver situação-problema envolvendo a variação de grandezas, direta ou inversamente proporcionais."/>
+		<habilidade selection="3" number="17" description="Analisar informações envolvendo a variação de grandezas como recurso para a construção de argumentação."/>
+		<habilidade selection="4" number="18" description="Avaliar propostas de intervenção na realidade envolvendo variação de grandezas."/>
+	</competencia>
+	<competencia selection="4" number="5" code="mt" description="Modelar e resolver problemas que envolvem variáveis socioeconômicas ou técnico-científicas, usando representações algébricas.">
+		<habilidade selection="0" number="-1" description=""/>
+		<habilidade selection="1" number="19" description="Identificar representações algébricas que expressem a relação entre grandezas."/>
+		<habilidade selection="2" number="20" description="Interpretar gráfico cartesiano que represente relações entre grandezas."/>
+		<habilidade selection="3" number="21" description="Resolver situação-problema cuja modelagem envolva conhecimentos algébricos."/>
+		<habilidade selection="4" number="22" description="Utilizar conhecimentos algébricos/geométricos como recurso para a construção de argumentação."/>
+		<habilidade selection="5" number="23" description="Avaliar propostas de intervenção na realidade utilizando conhecimentos algébricos."/>
+	</competencia>
+	<competencia selection="5" number="6" code="mt" description="Interpretar informações de natureza científica e social obtidas da leitura de gráficos e tabelas, realizando previsão de tendência, extrapolação, interpolação e interpretação.">
+		<habilidade selection="0" number="-1" description=""/>
+		<habilidade selection="1" number="24" description="Utilizar informações expressas em gráficos ou tabelas para fazer inferências."/>
+		<habilidade selection="2" number="25" description="Resolver problema com dados apresentados em tabelas ou gráficos."/>
+		<habilidade selection="3" number="26" description="Analisar informações expressas em gráficos ou tabelas como recurso para a construção de argumentos."/>
+	</competencia>
+	<competencia selection="6" number="7" code="mt" description="Compreender o caráter aleatório e não-determinístico dos fenômenos naturais e sociais e utilizar instrumentos adequados para medidas, determinação de amostras e cálculos de probabilidade...">
+		<habilidade selection="0" number="-1" description=""/>
+		<habilidade selection="1" number="27" description="Calcular medidas de tendência central ou de dispersão de um conjunto de dados expressos em uma tabela de freqüências de dados agrupados (não em classes) ou em gráficos."/>
+		<habilidade selection="2" number="28" description="Resolver situação-problema que envolva conhecimentos de estatística e probabilidade."/>
+		<habilidade selection="3" number="29" description="Utilizar conhecimentos de estatística e probabilidade como recurso para a construção de argumentação."/>
+		<habilidade selection="4" number="30" description="Avaliar propostas de intervenção na realidade utilizando conhecimentos de estatística e probabilidade."/>
+	</competencia>
+	<competencia selection="0" number="1" code="cnt" description="Compreender as ciências naturais e as tecnologias a elas associadas como construções humanas, percebendo seus papéis nos processos de produção e no desenvolvimento econômico e social da humanidade.">
+		<habilidade selection="0" number="-1" description=""/>
+		<habilidade selection="1" number="1" description="Reconhecer características ou propriedades de fenômenos ondulatórios ou oscilatórios, relacionando-os a seus usos em diferentes contextos."/>
+		<habilidade selection="2" number="2" description="Associar a solução de problemas de comunicação, transporte, saúde ou outro, com o correspondente desenvolvimento científico e tecnológico."/>
+		<habilidade selection="3" number="3" description="Confrontar interpretações científicas com interpretações baseadas no senso comum, ao longo do tempo ou em diferentes culturas."/>
+		<habilidade selection="4" number="4" description="Avaliar propostas de intervenção no ambiente, considerando a qualidade da vida humana ou medidas de conservação, recuperação ou utilização sustentável da biodiversidade."/>
+	</competencia>
+	<competencia selection="1" number="2" code="cnt" description="Identificar a presença e aplicar as tecnologias associadas às ciências naturais em diferentes contextos.">
+		<habilidade selection="0" number="-1" description=""/>
+		<habilidade selection="1" number="5" description="Dimensionar circuitos ou dispositivos elétricos de uso cotidiano."/>
+		<habilidade selection="2" number="6" description="Relacionar informações para compreender manuais de instalação ou utilização de aparelhos, ou sistemas tecnológicos de uso comum."/>
+		<habilidade selection="3" number="7" description="Selecionar testes de controle, parâmetros ou critérios para a comparação de materiais e produtos, tendo em vista a defesa do consumidor, a saúde do trabalhador ou a qualidade de vida."/>
+	</competencia>
+	<competencia selection="2" number="3" code="cnt" description="Associar intervenções que resultam em degradação ou conservação ambiental a processos produtivos e sociais e a instrumentos ou ações científico-tecnológicos.">
+		<habilidade selection="0" number="-1" description=""/>
+		<habilidade selection="1" number="8" description="Identificar etapas em processos de obtenção, transformação, utilização ou reciclagem de recursos naturais, energéticos ou matérias-primas, considerando processos biológicos, químicos ou físicos neles envolvidos."/>
+		<habilidade selection="2" number="9" description="Compreender a importância dos ciclos biogeoquímicos ou do fluxo energia para a vida, ou da ação de agentes ou fenômenos que podem causar alterações nesses processos."/>
+		<habilidade selection="3" number="10" description="Analisar perturbações ambientais, identificando fontes, transporte e(ou) destino dos poluentes ou prevendo efeitos em sistemas naturais, produtivos ou sociais."/>
+		<habilidade selection="4" number="11" description="Reconhecer benefícios, limitações e aspectos éticos da biotecnologia, considerando estruturas e processos biológicos envolvidos em produtos biotecnológicos."/>
+		<habilidade selection="5" number="12" description="Avaliar impactos em ambientes naturais decorrentes de atividades sociais ou econômicas, considerando interesses contraditórios."/>
+	</competencia>
+	<competencia selection="3" number="4" code="cnt" description="Compreender interações entre organismos e ambiente, em particular aquelas relacionadas à saúde humana, relacionando conhecimentos científicos, aspectos culturais e características individuais.">
+		<habilidade selection="0" number="-1" description=""/>
+		<habilidade selection="1" number="13" description="Reconhecer mecanismos de transmissão da vida, prevendo ou explicando a manifestação de características dos seres vivos."/>
+		<habilidade selection="2" number="14" description="Identificar padrões em fenômenos e processos vitais dos organismos, como manutenção do equilíbrio interno, defesa, relações com o ambiente, sexualidade, entre outros."/>
+		<habilidade selection="3" number="15" description="Interpretar modelos e experimentos para explicar fenômenos ou processos biológicos em qualquer nível de organização dos sistemas biológicos."/>
+		<habilidade selection="4" number="16" description="Compreender o papel da evolução na produção de padrões, processos biológicos ou na organização taxonômica dos seres vivos."/>
+	</competencia>
+	<competencia selection="4" number="5" code="cnt" description="Entender métodos e procedimentos próprios das ciências naturais e aplicá-los em diferentes contextos.">
+		<habilidade selection="0" number="-1" description=""/>
+		<habilidade selection="1" number="17" description="Relacionar informações apresentadas em diferentes formas de linguagem e representação usadas nas ciências físicas, químicas ou biológicas, como texto discursivo, gráficos, tabelas, relações matemáticas ou linguagem simbólica."/>
+		<habilidade selection="2" number="18" description="Relacionar propriedades físicas, químicas ou biológicas de produtos, sistemas ou procedimentos tecnológicos às finalidades a que se destinam."/>
+		<habilidade selection="3" number="19" description="Avaliar métodos, processos ou procedimentos das ciências naturais que contribuam para diagnosticar ou solucionar problemas de ordem social, econômica ou ambiental."/>
+	</competencia>
+	<competencia selection="5" number="6" code="cnt" description="Apropriar-se de conhecimentos da física para, em situações problema, interpretar, avaliar ou planejar intervenções científico-tecnológicas.">
+		<habilidade selection="0" number="-1" description=""/>
+		<habilidade selection="1" number="20" description="Caracterizar causas ou efeitos dos movimentos de partículas, substâncias, objetos ou corpos celestes."/>
+		<habilidade selection="2" number="21" description="Utilizar leis físicas e (ou) químicas para interpretar processos naturais ou tecnológicos inseridos no contexto da termodinâmica e(ou) do eletromagnetismo."/>
+		<habilidade selection="3" number="22" description="Compreender fenômenos decorrentes da interação entre a radiação e a matéria em suas manifestações em processos naturais ou tecnológicos, ou em suas implicações biológicas, sociais, econômicas ou ambientais."/>
+		<habilidade selection="4" number="23" description="Avaliar possibilidades de geração, uso ou transformação de energia em ambientes específicos, considerando implicações éticas, ambientais, sociais e/ou econômicas."/>
+	</competencia>
+	<competencia selection="6" number="7" code="cnt" description="Apropriar-se de conhecimentos da química para, em situações problema, interpretar, avaliar ou planejar intervenções científico-tecnológicas.">
+		<habilidade selection="0" number="-1" description=""/>
+		<habilidade selection="1" number="24" description="Utilizar códigos e nomenclatura da química para caracterizar materiais, substâncias ou transformações químicas."/>
+		<habilidade selection="2" number="25" description="Caracterizar materiais ou substâncias, identificando etapas, rendimentos ou implicações biológicas, sociais, econômicas ou ambientais de sua obtenção ou produção."/>
+		<habilidade selection="3" number="26" description="Avaliar implicações sociais, ambientais e/ou econômicas na produção ou no consumo de recursos energéticos ou minerais, identificando transformações químicas ou de energia envolvidas nesses processos."/>
+		<habilidade selection="4" number="27" description="Avaliar propostas de intervenção no meio ambiente aplicando conhecimentos químicos, observando riscos ou benefícios."/>
+	</competencia>
+	<competencia selection="7" number="8" code="cnt" description="Apropriar-se de conhecimentos da biologia para, em situações problema, interpretar, avaliar ou planejar intervenções científico-tecnológicas.">
+		<habilidade selection="0" number="-1" description=""/>
+		<habilidade selection="1" number="28" description="Associar características adaptativas dos organismos com seu modo de vida ou com seus limites de distribuição em diferentes ambientes, em especial em ambientes brasileiros."/>
+		<habilidade selection="2" number="29" description="Interpretar experimentos ou técnicas que utilizam seres vivos, analisando implicações para o ambiente, a saúde, a produção de alimentos, matérias primas ou produtos industriais."/>
+		<habilidade selection="3" number="30" description="Avaliar propostas de alcance individual ou coletivo, identificando aquelas que visam à preservação e a implementação da saúde individual, coletiva ou do ambiente."/>
+	</competencia>
+	<competencia selection="0" number="1" code="lct" description="Aplicar as tecnologias da comunicação e da informação na escola, no trabalho e em outros contextos relevantes para sua vida.">
+		<habilidade selection="0" number="-1" description=""/>
+		<habilidade selection="1" number="1" description="Identificar as diferentes linguagens e seus recursos expressivos como elementos de caracterização dos sistemas de comunicação."/>
+		<habilidade selection="2" number="2" description="Recorrer aos conhecimentos sobre as linguagens dos sistemas de comunicação e informação para resolver problemas sociais."/>
+		<habilidade selection="3" number="3" description="Relacionar informações geradas nos sistemas de comunicação e informação, considerando a função social desses sistemas."/>
+		<habilidade selection="4" number="4" description="Reconhecer posições críticas aos usos sociais que são feitos das linguagens e dos sistemas de comunicação e informação."/>
+	</competencia>
+	<competencia selection="1" number="2" code="lct" description="Conhecer e usar língua(s) estrangeira(s) moderna(s) como instrumento de acesso a informações e a outras culturas e grupos sociais.">
+		<habilidade selection="0" number="-1" description=""/>
+		<habilidade selection="1" number="5" description="Associar vocábulos e expressões de um texto em LEM ao seu tema."/>
+		<habilidade selection="2" number="6" description="Utilizar os conhecimentos da LEM e de seus mecanismos como meio de ampliar as possibilidades de acesso a informações, tecnologias e culturas."/>
+		<habilidade selection="3" number="7" description="Relacionar um texto em LEM, as estruturas linguísticas, sua função e seu uso social."/>
+		<habilidade selection="4" number="8" description="Reconhecer a importância da produção cultural em LEM como representação da diversidade cultural e linguística."/>
+	</competencia>
+	<competencia selection="2" number="3" code="lct" description="Compreender e usar a linguagem corporal como relevante para a própria vida, integradora social e formadora da identidade.">
+		<habilidade selection="0" number="-1" description=""/>
+		<habilidade selection="1" number="9" description="Reconhecer as manifestações corporais de movimento como originárias de necessidades cotidianas de um grupo social."/>
+		<habilidade selection="2" number="10" description="Reconhecer a necessidade de transformação de hábitos corporais em função das necessidades cinestésicas."/>
+		<habilidade selection="3" number="11" description="Reconhecer a linguagem corporal como meio de interação social, considerando os limites de desempenho e as alternativas de adaptação para diferentes indivíduos."/>
+	</competencia>
+	<competencia selection="3" number="4" code="lct" description="Compreender a arte como saber cultural e estético gerador de significação e integrador da organização do mundo e da própria identidade.">
+		<habilidade selection="0" number="-1" description=""/>
+		<habilidade selection="1" number="12" description="Reconhecer diferentes funções da arte, do trabalho da produção dos artistas em seus meios culturais."/>
+		<habilidade selection="2" number="13" description="Analisar as diversas produções artísticas como meio de explicar diferentes culturas, padrões de beleza e preconceitos."/>
+		<habilidade selection="3" number="14" description="Reconhecer o valor da diversidade artística e das inter-relações de elementos que se apresentam nas manifestações de vários grupos sociais e étnicos."/>
+	</competencia>
+	<competencia selection="4" number="5" code="lct" description="Analisar, interpretar e aplicar recursos expressivos das linguagens, relacionando textos com seus contextos, mediante a natureza, função, organização, estrutura das manifestações, de acordo com as condições de produção e recepção.">
+		<habilidade selection="0" number="-1" description=""/>
+		<habilidade selection="1" number="15" description="Estabelecer relações entre o texto literário e o momento de sua produção, situando aspectos do contexto histórico, social e político."/>
+		<habilidade selection="2" number="16" description="Relacionar informações sobre concepções artísticas e procedimentos de construção do texto literário."/>
+		<habilidade selection="3" number="17" description="Reconhecer a presença de valores sociais e humanos atualizáveis e permanentes no patrimônio literário nacional."/>
+	</competencia>
+	<competencia selection="5" number="6" code="lct" description="Compreender e usar os sistemas simbólicos das diferentes linguagens como meios de organização cognitiva da realidade pela constituição de significados, expressão, comunicação e informação.">
+		<habilidade selection="0" number="-1" description=""/>
+		<habilidade selection="1" number="18" description="Identificar os elementos que concorrem para a progressão temática e para a organização e estruturação de textos de diferentes gêneros e tipos."/>
+		<habilidade selection="2" number="19" description="Analisar a função da linguagem predominante nos textos em situações específicas de interlocução."/>
+		<habilidade selection="3" number="20" description="Reconhecer a importância do patrimônio linguístico para a preservação da memória e da identidade nacional."/>
+	</competencia>
+	<competencia selection="6" number="7" code="lct" description="Confrontar opiniões e pontos de vista sobre as diferentes linguagens e suas manifestações específicas.">
+		<habilidade selection="0" number="-1" description=""/>
+		<habilidade selection="1" number="21" description="Reconhecer em textos de diferentes gêneros, recursos verbais e não-verbais utilizados com a finalidade de criar e mudar comportamentos e hábitos."/>
+		<habilidade selection="2" number="22" description="Relacionar, em diferentes textos, opiniões, temas, assuntos e recursos linguísticos."/>
+		<habilidade selection="3" number="23" description="Inferir em um texto quais são os objetivos de seu produtor e quem é seu público alvo, pela análise dos procedimentos argumentativos utilizados."/>
+		<habilidade selection="4" number="24" description="Reconhecer no texto estratégias argumentativas empregadas para o convencimento do público, tais como a intimidação, sedução, comoção, chantagem, entre outras."/>
+	</competencia>
+	<competencia selection="7" number="8" code="lct" description="Compreender e usar a língua portuguesa como língua materna, geradora de significação e integradora da organização do mundo e da própria identidade.">
+		<habilidade selection="0" number="-1" description=""/>
+		<habilidade selection="1" number="25" description="Identificar, em textos de diferentes gêneros, as marcas linguísticas que singularizam as variedades linguísticas sociais, regionais e de registro."/>
+		<habilidade selection="2" number="26" description="Relacionar as variedades lingüísticas a situações específicas de uso social."/>
+		<habilidade selection="3" number="27" description="Reconhecer os usos da norma padrão da língua portuguesa nas diferentes situações de comunicação."/>
+	</competencia>
+	<competencia selection="8" number="9" code="lct" description="Entender os princípios, a natureza, a função e o impacto das tecnologias da comunicação e da informação na sua vida pessoal e social, no desenvolvimento do conhecimento, associando-o aos...">
+		<habilidade selection="0" number="-1" description=""/>
+		<habilidade selection="1" number="28" description="Reconhecer a função e o impacto social das diferentes tecnologias da comunicação e informação."/>
+		<habilidade selection="2" number="29" description="Identificar pela análise de suas linguagens, as tecnologias da comunicação e informação."/>
+		<habilidade selection="3" number="30" description="Relacionar as tecnologias de comunicação e informação ao desenvolvimento das sociedades e ao conhecimento que elas produzem."/>
+	</competencia>
+</competencias>

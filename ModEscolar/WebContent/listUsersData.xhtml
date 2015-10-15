@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="templateAdmin.xhtml">
+
+	<ui:define name="centro">
+
+		<ui:include src="newUser.xhtml"></ui:include>
+		<ui:include src="newDiscipline.xhtml"></ui:include>
+
+		<h:form>
+
+			<p:growl id="messages" />
+
+			<p:breadCrumb>
+				<p:menuitem value="INICIO" onclick="homeAdm()" />
+				<p:menuitem value="INICIO" onclick="homeAdm()" />
+				<p:menuitem value="SAIR" onclick="sair()" />
+
+			</p:breadCrumb>
+
+
+
+		</h:form>
+
+		<h:form id="form_list_discipline">
+
+			<p:dataTable var="disc" value="#{listUsersBean.users}"
+				rowKey="#{disc.id}" paginator="true" rows="20"
+				selection="#{listUsersBean.selectedUser}"
+				selectionMode="single"
+				filteredValue="#{listUsersBean.filteredUser}"
+				id="carsTable">
+
+				<p:ajax event="rowSelect" update=":form_list_discipline:display"
+					oncomplete="carDialog.show()" />
+
+				<f:facet name="header">  
+             Usuários Cadastrados  
+                </f:facet>
+
+				<p:column headerText="Nome" sortBy="nameUser" filterBy="nameUser" id="nameUser">  
+            #{disc.nameUser}  
+        </p:column>
+
+				<p:column headerText="Login" sortBy="login" filterBy="login"
+					id="login">  
+            #{disc.login}  
+        </p:column>
+
+				<p:column headerText="Senha" sortBy="password" filterBy="password"
+					id="password">  
+            #{disc.password}  
+        
+        </p:column>
+
+				<p:column headerText="Ativo" sortBy="active" filterBy="active" id="active">  
+            #{disc.active}  
+        </p:column>
+
+				
+			</p:dataTable>
+
+			<p:dialog header="Usuários Detalhes" widgetVar="carDialog"
+				resizable="treu" showEffect="explode" hideEffect="explode">
+
+				<p:tabView id="display">
+
+					<p:tab title="Usuário">
+
+
+						<h:panelGrid columns="2" cellpadding="10">
+
+	
+							<h:outputText value="Nome: " />
+							
+							<p:inputText value="#{listUsersBean.selectedUser.nameUser}"></p:inputText>
+							
+
+							<h:outputText value="Login:"></h:outputText>
+							
+							<p:inputText id="login" value="#{listUsersBean.novoLogin}"  >
+								<p:ajax event="blur" listener="#{listUsersBean.validaLoginsRepetidos}" />
+							</p:inputText>
+							
+							<h:outputText value="Senha:"></h:outputText>
+							
+							<p:inputText value="#{listUsersBean.selectedUser.password}"  >
+							
+							</p:inputText>
+							
+
+							<h:outputText value="Ativo: " />
+							<p:selectOneMenu
+								value="#{listUsersBean.selectedUser.active}">
+
+								<f:selectItem itemLabel="Ativo" itemValue="1" />
+								<f:selectItem itemLabel="Bloqueado" itemValue="0" />
+								
+							</p:selectOneMenu>
+
+						</h:panelGrid>
+
+
+
+
+						<h:panelGrid columns="4" cellpadding="10">
+
+
+
+
+							<p:commandButton value="Atualizar"
+								actionListener="#{listUsersBean.updateUser}"
+								oncomplete="carDialog.hide()" update=":form_list_discipline"
+								style='background:#009899; margin-left:5%; color:#ffffff'></p:commandButton>
+
+
+							<p:commandButton value="Remover"
+								actionListener="#{listUsersBean.removerUsuario}"
+								oncomplete="carDialog.hide()" update=":form_list_discipline"
+								style='background:#009899; margin-left:5%; color:#ffffff'>
+								<p:confirm header="Confirmação"
+									message="Esta ação não pode ser desfeita, deseja continuar?"
+									icon="ui-icon-alert" />
+							</p:commandButton>
+
+							<p:confirmDialog global="true" showEffect="fade"
+								hideEffect="explode" >
+								<p:commandButton value="Sim" type="button"
+									styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+								<p:commandButton value="Não" type="button"
+									styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+							</p:confirmDialog>
+
+
+
+						</h:panelGrid>
+
+
+					</p:tab>
+
+
+
+
+				</p:tabView>
+
+
+
+
+
+			</p:dialog>
+
+		</h:form>
+
+
+
+
+	</ui:define>
+
+
+
+</ui:composition>
+
+
+
+</html>

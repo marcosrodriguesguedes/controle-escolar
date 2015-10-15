@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<title>Sistema Escolar</title>
+
+	<f:viewParam name="sessaoID" value="#{LoginBean.session}" />
+
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/css/default.css" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/css/principal.css" />
+
+
+
+</h:head>
+<h:body
+	style='background-image:url("img/bg_index.png"); background-size:100%;'>
+
+	<p:ajaxStatus
+		style="width:64px;height:64px;position:fixed;right:5px;bottom:5px">
+		<f:facet name="start">
+			<p:graphicImage value="/img/loading.gif" />
+		</f:facet>
+
+		<f:facet name="complete">
+			<h:outputText value="" />
+		</f:facet>
+	</p:ajaxStatus>
+
+	<h:form id="form">
+
+
+		<p:growl id="growl" showDetail="true" life="3000" />
+
+		<h:panelGrid
+			style="position: relative; margin: 0 auto; text-align:center;">
+
+			<p:graphicImage value="img/marca_transparente.png"
+				style="position:relative;margin: 20px auto; text-align:center;"></p:graphicImage>
+
+			<h3
+				style='text-transform: uppercase; font-size: 12px; color: #0c6869; margin: 0 auto;'>Sistema
+				de Gerenciamento Escolar - Ensino Inovador</h3>
+
+		</h:panelGrid>
+
+
+
+
+
+		<h:panelGrid columns="2" cellpadding="5" bgcolor="White"
+			style='padding:10px;font-size:12px; color:#0c6869; text-transform:uppercase; position:relative;margin: 10px auto; height: 200px; width: 300px; border-radius: 10px; background-image: url("img/bg_login.png"); border-bottom-color: Aquamarine; border-bottom-style: groove'
+			title="Login">
+			<h:outputLabel for="username" value="Usuário:" />
+			<p:inputText value="#{loginBean.username}" id="username"
+				required="true" label="Usuario" size="25"
+				style="text-transform:uppercase; color: #000000; text-decoration: blink" />
+
+			<h:outputLabel for="password" value="Senha:" />
+			<h:inputSecret value="#{loginBean.password}" id="password"
+				required="true" label="Senha" size="20"
+				style="color: #000000; text-decoration: blink" />
+
+			<f:facet name="footer">
+				<p:commandButton id="loginButton" value="Login" update="growl"
+					actionListener="#{loginBean.login}"
+					style='background:#009899; color:#ffffff; border:none; width:120px; height:35px; margin: 0 auto; text-transform:uppercase;' />
+			</f:facet>
+		</h:panelGrid>
+
+
+	</h:form>
+
+
+
+</h:body>
+</html>

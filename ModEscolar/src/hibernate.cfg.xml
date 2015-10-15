@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+  <session-factory>
+      <property name="connection.url">jdbc:mysql://localhost/escolar</property>
+      <property name="connection.username">root</property>
+      <property name="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>      
+ <!-- <property name="connection.driver_class">com.mysql.jdbc.Driver</property> -->
+      <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+      <property name="hibernate.hbm2ddl.auto">update</property>
+      <property name="connection.password">ac163245</property>
+      <property name="current_session_context_class">thread</property>
+     
+     <!-- poll de conexoes c3po--> 
+	 <property name="hibernate.c3p0.acquire_increment">1</property>
+	 <property name="hibernate.c3p0.idle_test_period">600</property>
+	 <property name="hibernate.c3p0.min_size">5</property>
+	 <property name="hibernate.c3p0.max_size">20</property>
+	 <property name="hibernate.c3p0.max_statements">50</property>
+	 <property name="hibernate.c3p0.timeout">1800</property>
+	 <property name="hibernate.c3p0.acquireRetryAttempts">1</property>
+	 <property name="hibernate.c3p0.acquireRetryDelay">250</property>
+      <!-- mapeamento -->
+      <mapping class="br.mod.escolar.model.entities.Teacher" />
+	  <mapping class="br.mod.escolar.model.entities.Student" />
+	  <mapping class="br.mod.escolar.model.entities.Person" />
+	  <mapping class="br.mod.escolar.model.entities.Discipline" />
+	  <mapping class="br.mod.escolar.model.entities.User" />
+	  <mapping class="br.mod.escolar.model.entities.UserType" />
+	  <mapping class="br.mod.escolar.model.entities.Frequencia"/>
+	  <mapping class="br.mod.escolar.model.entities.RegistroDeAula" />
+	  <mapping class="br.mod.escolar.model.entities.TeacherDiscipline" />
+	  <mapping class="br.mod.escolar.model.entities.ParentalInfo" />
+	  <mapping class="br.mod.escolar.model.entities.HorariosDisciplinas"/>
+	  <mapping class="br.mod.escolar.model.entities.Notas"/>
+	  <mapping class="br.mod.escolar.model.entities.Equipe"/>
+	  <mapping class="br.mod.escolar.model.entities.EquipeStudents"/>
+	  <mapping class="br.mod.escolar.model.entities.MaterialDeApoio"/>
+	  <mapping class="br.mod.escolar.model.entities.Sessions"/>
+	  <mapping class="br.mod.escolar.model.entities.TurmasConfig"/>
+	  <mapping class="br.mod.escolar.model.entities.FrequenciaHistorico"/>
+	  <mapping class="br.mod.escolar.model.entities.Historico"/>
+	  <mapping class="br.mod.escolar.model.entities.NotasHistorico"/>
+	  <mapping class="br.mod.escolar.model.entities.TeacherClassID"/>
+	  <mapping class="br.mod.escolar.model.entities.EscolarConfig"/>
+	  
+	  
+  </session-factory>
+</hibernate-configuration>

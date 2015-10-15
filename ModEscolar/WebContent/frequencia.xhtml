@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="templateTeacher.xhtml">
+
+	<ui:define name="centro">
+	
+	
+	 <h:form id="form" >
+	 	
+	 	<p:growl id="growl" showDetail="true"/>
+	 	
+	 	<h:panelGrid columns="6" cellspacing="15">
+	 	      
+	 	     <h:outputText value="Disciplina: "></h:outputText>
+	 	     <h:outputText value="#{frequenciaBean.nomeDisciplina}"></h:outputText>
+	 	     
+	 	     <h:outputText value="Grau: "></h:outputText>
+	 	     <h:outputText value="#{frequenciaBean.grau}"></h:outputText>
+	 	     
+	 	     <h:outputText value="Série: "></h:outputText>
+	 	     <h:outputText value="#{frequenciaBean.serie}"></h:outputText>
+	 	    
+	 	  
+	 	
+	 	</h:panelGrid>
+	 	
+	 	<p:separator></p:separator>
+	 
+	     <h:panelGrid columns="4">
+	        	
+	       
+
+    			<p:calendar value="#{frequenciaBean.dataSelecionada}" mode="inline" id="inlineCal">
+        			<p:ajax event="dateSelect" listener="#{frequenciaBean.handleDateSelect}" update=":form2:cars,growl" />
+    			</p:calendar>
+    			
+    			 <h:outputText value="Turma:" />
+    			
+    			<p:selectOneMenu value="#{frequenciaBean.turma}" label="Turma" >
+    			   	
+    			    <p:ajax event="change" update=":form2:cars" listener="#{frequenciaBean.subjectSelectionChanged}" />
+    			   	
+    			   	<f:selectItem itemLabel="TURMA" itemValue="" />  
+            		<f:selectItem itemLabel="A" itemValue="A" />  
+           			<f:selectItem itemLabel="B" itemValue="B" />  
+            		<f:selectItem itemLabel="C" itemValue="C" /> 
+            		<f:selectItem itemLabel="D" itemValue="D" />  
+            		<f:selectItem itemLabel="E" itemValue="E" />  
+            		<f:selectItem itemLabel="F" itemValue="F" />  
+            		<f:selectItem itemLabel="G" itemValue="G" />   
+    			
+    			</p:selectOneMenu>
+    			
+    			
+    			 <p:commandButton value="Salvar Frequencia" actionListener="#{frequenciaBean.saveFrequencia}" style='background:#009899; color:#ffffff' >
+    			 </p:commandButton>
+    			
+	     
+	     </h:panelGrid>
+	
+    	
+
+    </h:form>
+    
+	<p:spacer></p:spacer>
+	
+    
+    <h:form id="form2">
+      
+      <p:growl id="messages" showDetail="true"/> 
+      
+       <p:dataTable id="cars" var="car" value="#{frequenciaBean.lisFrequencia}" editable="true" editMode="cell" widgetVar="carsTable" 
+       emptyMessage="NÃO HÁ ALUNOS CADASTRADOS PARA TURMA INFORMADA" paginator="true" rows="8" >  
+  
+        <f:facet name="header">  
+            Frequência  
+        </f:facet>  
+  
+         <p:ajax event="cellEdit" listener="#{frequenciaBean.onCellEdit}" update=":form2:messages" />  
+  
+        <p:column headerText="Aluno" style="width:50%">  
+                <h:outputText value="#{car.nomeDisciplina}" />  
+        </p:column>
+        
+        <p:column headerText="Serie" style="width:10%">  
+                <h:outputText value="#{car.serie}" />  
+        </p:column>  
+        
+        <p:column headerText="Grau" style="width:10%">  
+                <h:outputText value="#{car.grau}" />  
+        </p:column> 
+        
+        <p:column headerText="Turma" style="width:10%">  
+                <h:outputText value="#{car.turma}" />  
+        </p:column> 
+  
+        <p:column headerText="Frequencia" style="width:20%">  
+            <p:cellEditor>  
+                <f:facet name="output"><h:outputText value="#{car.frequencia}" /></f:facet>  
+                <f:facet name="input">  
+                    <h:selectOneMenu value="#{car.frequencia}" style="width:100%">  
+                        <f:selectItems value="#{frequenciaBean.flagFrequencia}" var="frequencia" itemLabel="#{frequencia}" itemValue="#{frequencia}" />  
+                    </h:selectOneMenu>  
+                </f:facet>  
+            </p:cellEditor>  
+        </p:column>  
+  
+        
+    </p:dataTable>  
+      
+    
+    
+    
+    </h:form>
+    
+   
+
+	</ui:define>
+
+
+
+</ui:composition>
+
+
+
+</html>

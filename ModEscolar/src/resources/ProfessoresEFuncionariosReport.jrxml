@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<style name="Crosstab Data Text" isDefault="false" hAlign="Center"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="cpf" class="java.lang.String"/>
+	<field name="dddPhoneNumber" class="java.lang.String"/>
+	<field name="phoneNumber" class="java.lang.String"/>
+	<field name="nickName" class="java.lang.String"/>
+	<field name="BANNER_LOGO" class="java.awt.Image"/>
+	<field name="title" class="java.lang.String"/>
+	<field name="socialIdentificationNumber" class="java.lang.String"/>
+	<field name="dateOfAdmission" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<pageHeader>
+		<band height="139">
+			<staticText>
+				<reportElement x="101" y="33" width="426" height="58"/>
+				<textElement>
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[                                                   ESTADO DA PARAIBA
+                                     SECRETARIA DA EDUCAÇÃO E CULTURA
+                                                  3º  Região de Ensino
+                            Esc. Est Ens.  Fundamental e Médio Severino Cabral
+
+                                       RESOLUÇÃO: 155/2006, 166/2006 CEE/PB.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="97" y="0" width="414" height="33"/>
+				<textElement>
+					<font fontName="Arial" size="13" isBold="true" isUnderline="false" pdfFontName="Times-Bold"/>
+				</textElement>
+				<text><![CDATA[                                    Sistema de Gerenciamento Escolar
+                                           Escola Severino Cabral]]></text>
+			</staticText>
+			<image>
+				<reportElement x="14" y="0" width="104" height="102"/>
+				<imageExpression class="java.awt.Image"><![CDATA[$F{BANNER_LOGO}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement mode="Transparent" x="129" y="91" width="371" height="21" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{title}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="124" width="197" height="13"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Nome                                                        ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="201" y="124" width="27" height="13"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[CPF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="287" y="124" width="71" height="13"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Telefone      ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="361" y="124" width="61" height="13"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Apelido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="124" width="68" height="13"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[   ID. Social  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="496" y="110" width="55" height="27"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Data
+Admissão]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="18">
+			<textField>
+				<reportElement x="0" y="3" width="197" height="13"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="426" y="5" width="68" height="13"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{socialIdentificationNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="361" y="4" width="60" height="13"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nickName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="497" y="5" width="54" height="13"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{dateOfAdmission}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="203" y="3" width="81" height="13"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cpf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="287" y="4" width="15" height="13"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{dddPhoneNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="304" y="4" width="54" height="13"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{phoneNumber}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="22">
+			<staticText>
+				<reportElement x="0" y="4" width="550" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="511" y="4" width="39" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="472" y="4" width="39" height="14"/>
+				<textElement/>
+				<text><![CDATA[Página:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="2" width="555" height="1"/>
+			</line>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

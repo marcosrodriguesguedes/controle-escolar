@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="templateStudent.xhtml">
+
+	<ui:define name="centro">
+          <p:menubar>
+				<p:submenu label="Configurações" icon="ui-icon-document">
+					<p:submenu label="Senha/Usuário" icon="ui-icon-contact">
+						<p:menuitem value="Atualizar Senha" url="#" />
+						<p:menuitem value="Atualizar Usuário" url="#" />
+					</p:submenu>
+					
+				</p:submenu>
+		
+
+				<f:facet name="options">
+					
+					<p:commandButton type="button" value="Sair" icon="ui-icon-extlink"  onclick="sair()"/>
+				</f:facet>
+			</p:menubar>
+			
+			<p:spacer></p:spacer>
+
+
+		<h:form id="stud">
+
+			<p:dataTable id="cars" var="car"
+				value="#{frequenciaStudentBean.frequencias}" widgetVar="carsTable2"
+				rowKey="#{car.id}"
+				
+				emptyMessage="NÃO HÁ REGISTROS DE FREQUENCIA PARA O ALUNO"
+				paginator="true" rows="8">
+
+				<p:column headerText="Disciplina" style="width:25%" filterBy="data"
+					sortBy="data">
+					<h:outputText value="#{car.data}" />
+				</p:column>
+
+				<p:column headerText="Serie" style="width:25%" filterBy="serie"
+					sortBy="serie">
+					<h:outputText value="#{car.serie}" />
+				</p:column>
+
+				<p:column headerText="Grau" style="width:25%" filterBy="grau"
+					sortBy="grau">
+					<h:outputText value="#{car.grau}" />
+				</p:column>
+
+				<p:column headerText="Frequência" style="width:25%"
+					filterBy="frequencia" sortBy="frequencia">
+					<h:outputText value="#{car.frequencia}" />
+				</p:column>
+				
+				<p:columnGroup type="footer" >
+                <p:row>
+                    <p:column footerText="Total Faltas : #{frequenciaStudentBean.faltas}: "   style="text-align:right"/>
+                   
+                </p:row>
+            </p:columnGroup>
+
+
+			</p:dataTable>
+
+
+			<p:spacer></p:spacer>
+
+
+		</h:form>
+
+		<h:form id="form2">
+
+			<p:growl id="messages" showDetail="true" />
+
+			<p:dataTable id="cars" var="car"
+				value="#{frequenciaStudentBean.disciplines}" widgetVar="carsTable"
+				rowKey="#{car.id}"
+				selection="#{frequenciaStudentBean.selectedDiscipline}"
+				selectionMode="single"
+				emptyMessage="NÃO HÁ DISCIPLINAS CADASTRADAS PARA O ALUNO"
+				paginator="true" rows="8">
+
+				<p:ajax event="rowSelect"
+					listener="#{frequenciaStudentBean.onRowSelect}"
+					update=":stud :form2:messages" />
+
+
+				<p:column headerText="Disciplina" style="width:50%">
+					<h:outputText value="#{car.name}" />
+				</p:column>
+
+				<p:column headerText="Serie" style="width:10%">
+					<h:outputText value="#{car.grade}" />
+				</p:column>
+
+				<p:column headerText="Grau" style="width:10%">
+					<h:outputText value="#{car.grade2}" />
+				</p:column>
+
+				<p:column headerText="Horas Semanais" style="width:10%">
+					<h:outputText value="#{car.hoursPerWeek}" />
+				</p:column>
+				
+				
+
+
+			</p:dataTable>
+
+
+
+		</h:form>
+
+
+	</ui:define>
+
+
+</ui:composition>
+
+
+
+</html>

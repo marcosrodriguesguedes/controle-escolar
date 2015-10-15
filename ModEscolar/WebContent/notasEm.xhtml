@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="templateTeacher.xhtml">
+
+	<ui:define name="centro">
+
+
+       <p:ajaxStatus
+		style="width:64px;height:64px;position:fixed;right:5px;bottom:5px">
+		<f:facet name="start">
+			<p:graphicImage value="/img/loading.gif" />
+		</f:facet>
+
+		<f:facet name="complete">
+			<h:outputText value="" />
+		</f:facet>
+    	</p:ajaxStatus>
+    	
+    	<h:panelGrid columns="6" cellspacing="15">
+	 	      
+	 	     <h:outputText value="Disciplina: "></h:outputText>
+	 	     <h:outputText value="#{loginBean.disciplina.name}"></h:outputText>
+	 	     
+	 	     <h:outputText value="Grau: "></h:outputText>
+	 	     <h:outputText value="#{loginBean.disciplina.grade2}"></h:outputText>
+	 	     
+	 	     <h:outputText value="Série: "></h:outputText>
+	 	     <h:outputText value="#{loginBean.disciplina.grade}"></h:outputText>
+	 	    
+	 	  
+	 	
+	 	</h:panelGrid>
+	 	
+	 	<p:separator></p:separator>
+
+
+
+		<h:form id="stud">
+		
+		   <p:messages autoUpdate="true"/>
+
+			<h:panelGrid columns="9" columnClasses="label, value">
+
+				<h:outputText value="Foto: " />
+
+
+				<p:graphicImage value="/fotos/#{notasEmBean.selectedStudent.pictureUrl}"
+					 id="photo" style="cursor:pointer"
+					cache="false" width="100" height="100">
+
+				</p:graphicImage>
+
+
+
+				<h:outputText value="Nome Educando: *" />
+				<p:inputText  value="#{notasEmBean.selectedStudent.name}"  size="60" id="nome" />
+
+
+				<h:outputText value="Bimestre: *" />
+
+				<p:selectOneMenu value="#{notasEmBean.bimestre}">
+				
+				   <p:ajax event="change" update=":stud" listener="#{notasEmBean.selectionChangedBimestre}" />
+					
+					<f:selectItem itemLabel="1º" itemValue="1" />
+					<f:selectItem itemLabel="2º" itemValue="2" />
+					<f:selectItem itemLabel="3º" itemValue="3" />
+					<f:selectItem itemLabel="4º" itemValue="4" />
+
+				</p:selectOneMenu>
+				
+				
+				<h:outputText value="Turma: *" />
+
+				<p:selectOneMenu value="#{notasEmBean.turma}">
+				
+				   <p:ajax event="change" update=":form2:cars :stud" listener="#{notasEmBean.selectionChangedTurma}" />
+					
+					<f:selectItem itemLabel="A" itemValue="A" />
+					<f:selectItem itemLabel="B" itemValue="B" />
+					<f:selectItem itemLabel="C" itemValue="C" />
+					<f:selectItem itemLabel="D" itemValue="D" />
+					<f:selectItem itemLabel="E" itemValue="E" />
+					<f:selectItem itemLabel="F" itemValue="F" />
+					<f:selectItem itemLabel="G" itemValue="G" />
+					<f:selectItem itemLabel="H" itemValue="H" />
+
+				</p:selectOneMenu>
+
+
+
+
+			</h:panelGrid>
+
+
+			<h:panelGrid columns="8" columnClasses="label, value"
+				styleClass="grid" cellspacing="15">
+
+				<h:outputText value="1º NOTA:" for="nota1"/>
+
+				<p:inputText id="nota1"  value="#{notasEmBean.nota1}" size="5" maxlength="3"  converterMessage="Valor Incorreto para 1º Nota" >
+				    <f:validateDoubleRange minimum="0.0" maximum="10.0" />
+				    <p:ajax event="change" update=":stud:media  :stud:mb :stud:mpf :stud:mediaFinal :stud:status" listener="#{notasEmBean.changeNota1}"/>
+				</p:inputText>
+				
+				<h:outputText value="2º NOTA:" />
+              
+				<p:inputText value="#{notasEmBean.nota2}" size="5" maxlength="3" converterMessage="Valor Incorreto para 2º Nota">
+				   <f:validateDoubleRange minimum="0.0" maximum="10.0" />
+				  <p:ajax event="change" update=":stud:media  :stud:mb :stud:mpf :stud:mediaFinal :stud:status" listener="#{notasEmBean.changeNota2}"/>
+				</p:inputText>
+
+
+				<h:outputText value="3º NOTA:" />
+
+				<p:inputText value="#{notasEmBean.nota3}" size="5" maxlength="3" converterMessage="Valor Incorreto para 3º Nota">
+				   <f:validateDoubleRange minimum="0.0" maximum="10.0" />
+				  <p:ajax event="change" update=":stud:media  :stud:mb :stud:mpf :stud:mediaFinal :stud:status" listener="#{notasEmBean.changeNota3}"/>
+				</p:inputText>
+
+				<h:outputText value="MEDIA:" />
+
+				<p:inputText value="#{notasEmBean.media}" size="5" readonly="true" id="media" />
+   
+				<h:outputText value="1º REC:" />
+
+				<p:inputText value="#{notasEmBean.rec1}" size="5" maxlength="3" converterMessage="Valor Incorreto para 1º Recuperação">
+				  <f:validateDoubleRange minimum="0.0" maximum="10.0" />
+				 <p:ajax event="change" update=":stud:media  :stud:mb :stud:mpf :stud:mediaFinal :stud:status" listener="#{notasEmBean.changeRec1}" />
+				</p:inputText>
+
+
+				<h:outputText value="2º REC:" />
+
+				<p:inputText value="#{notasEmBean.rec2}" size="5" maxlength="3" converterMessage="Valor Incorreto para 2º Recuperação">
+				  <f:validateDoubleRange minimum="0.0" maximum="10.0" />
+				 <p:ajax event="change" update=":stud:media  :stud:mb :stud:mpf :stud:mediaFinal :stud:status" listener="#{notasEmBean.changeRec2}" />
+				</p:inputText>
+
+
+				<h:outputText value="3º REC:" />
+
+				<p:inputText value="#{notasEmBean.rec3}" size="5" maxlength="3" converterMessage="Valor Incorreto para 3º Recuperação">
+				  <f:validateDoubleRange minimum="0.0" maximum="10.0" />
+				 <p:ajax event="change" update=":stud:media  :stud:mb :stud:mpf :stud:mediaFinal :stud:status" listener="#{notasEmBean.changeRec3}" />
+				</p:inputText>
+
+				<h:outputText value="MB:" />
+
+				<p:inputText value="#{notasEmBean.mediaBimestral}" size="5" readonly="true" id="mb" />
+				
+				
+
+				<h:outputText value="MPF" />
+
+				<p:inputText value="#{notasEmBean.mediaParcialFinal}" size="5" readonly="true" id="mpf" />
+
+				<h:outputText value="FINAL" />
+
+				<p:inputText value="#{notasEmBean.notaFinal}" size="5" maxlength="3"  converterMessage="Valor Incorreto Para Nota Final">
+				  <f:validateDoubleRange minimum="0.0" maximum="10.0" />
+				  <p:ajax event="change" update=":stud:media  :stud:mb :stud:mpf :stud:mediaFinal :stud:status"  listener="#{notasEmBean.changeFinal}" />
+				</p:inputText>
+
+				<h:outputText value="MF" />
+
+				<p:inputText value="#{notasEmBean.mediaFinal}" size="5" readonly="true" id="mediaFinal" />
+
+
+                <h:outputText value="Situação: " ></h:outputText>
+                
+                <h:outputText value="#{notasEmBean.status}" id="status" ></h:outputText>
+                
+                
+
+
+			</h:panelGrid >
+			
+			    <h:panelGrid columns="1" >
+			    
+			    <p:commandButton value="Salvar Notas" actionListener="#{notasEmBean.saveNotas}"  style='background:#009899; color:#ffffff' ></p:commandButton>
+                
+                </h:panelGrid>
+                
+                <p:separator></p:separator>
+                
+                <h:panelGrid columns="2">
+                 <p:commandButton value="Concluir Discipina:  #{loginBean.disciplina.name}" actionListener="#{notasEmBean.concluirAnoLetivo}" style='background:#009899; color:#ffffff' ></p:commandButton>   
+                 <p:commandButton value="Desativar Aluno:  #{notasEmBean.selectedStudent.name}" actionListener="#{notasEmBean.desativarAluno}" style='background:#009899; color:#ffffff' ></p:commandButton>   
+                </h:panelGrid>
+                
+		</h:form>
+		<p:spacer height="8"></p:spacer>
+
+		<h:form id="form2">
+
+			<p:growl id="messages" showDetail="true" />
+
+			<p:dataTable id="cars" var="car" value="#{notasEmBean.students}" 
+				widgetVar="carsTable"
+				rowKey="#{car.id}"
+				selection="#{notasEmBean.selectedStudent}" 
+				selectionMode="single"
+				emptyMessage="NÃO HÁ ALUNOS CADASTRADOS PARA TURMA INFORMADA OU PROFESSOR NÃO RELACIONADO A ESTA TURMA"
+				paginator="true" rows="10">
+				
+				<p:ajax event="rowSelect" listener="#{notasEmBean.onRowSelect}"   
+                    update=":stud :form2:messages" /> 
+
+
+				<p:column headerText="Aluno" style="width:50%">
+					<h:outputText value="#{car.name}" />
+				</p:column>
+
+				<p:column headerText="Serie" style="width:10%">
+					<h:outputText value="#{car.grade}" />
+				</p:column>
+
+				<p:column headerText="Grau" style="width:10%">
+					<h:outputText value="#{car.grade2}" />
+				</p:column>
+
+				<p:column headerText="Turma" style="width:10%">
+					<h:outputText value="#{car.classId}" />
+				</p:column>
+
+				
+			</p:dataTable>
+			
+		
+
+           
+		
+		</h:form>
+
+
+
+
+
+
+
+
+	</ui:define>
+
+
+
+</ui:composition>
+
+
+
+</html>

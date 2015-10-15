@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<title></title>
+   
+     
+
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/css/default.css" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/css/principal.css" />
+
+</h:head>
+<h:body>
+
+	<h:form id="form_upload">
+
+          
+		
+
+		<p:dialog id="dialog_disciplina" header="Nova Disciplina"
+			widgetVar="dlg_disciplina_new" resizable="true" showEffect="explode"
+			hideEffect="bounce" draggable="true"  >
+			
+			<p:growl id="msg" showDetail="true" life="3000" />
+
+
+			<h:panelGrid columns="2" cellpadding="10">
+
+				<h:outputText value="Área: " />
+				<p:selectOneMenu value="#{createNewDisciplineBean.area}" required="true" requiredMessage="Favor informar a área da disciplina" >
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItem itemLabel="Ciências Humanas e suas Tecnologias" itemValue="CHT" />
+					<f:selectItem itemLabel="Matemática e suas Tecnologias" itemValue="MT" />
+					<f:selectItem itemLabel="Ciências da Natureza,e suas Tecnologias" itemValue="CNMT" />
+					<f:selectItem itemLabel="Linguagens, Códigos e suas Tecnologias" itemValue="LCT" />
+					
+				</p:selectOneMenu>
+				
+				<h:outputText value="Nome: " />
+				<p:selectOneMenu value="#{createNewDisciplineBean.nome}" required="true" id="NomeDisciplina" requiredMessage="Favor informar o Nome da disciplina" >
+					<f:selectItem itemLabel="Selecione" itemValue="" />  
+                  	<f:selectItems value="#{createNewDisciplineBean.areaCHT}" />  
+				</p:selectOneMenu>
+
+			</h:panelGrid>
+			
+			
+
+
+			<h:panelGrid columns="2" cellpadding="10">
+
+				<h:outputText value="Grau"></h:outputText>
+				<p:selectOneMenu  value="#{createNewDisciplineBean.grau}" required="true" id="grau" requiredMessage="Favor informar Grau da disciplina" >
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItem itemLabel="Médio" itemValue="EM" />
+					<f:selectItem itemLabel="Médio Inovador" itemValue="EMI" />
+				</p:selectOneMenu>
+
+				<h:outputText value="Série: " />
+				<p:selectOneMenu value="#{createNewDisciplineBean.serie}" required="true" id="Série" requiredMessage="Favor informar Série da disciplina">
+					<f:selectItem itemLabel="1º" itemValue="1" />
+					<f:selectItem itemLabel="2º" itemValue="2" />
+					<f:selectItem itemLabel="3º" itemValue="3" />
+				</p:selectOneMenu>
+				
+				
+				<h:outputText value="H.Semanais" />
+				<p:inputText value="#{createNewDisciplineBean.horasSemanais}"  required="true" requiredMessage="Favor informar carga horaria semanal da disciplina" >
+					<f:validateLongRange minimum="0" maximum="48" />
+					<p:ajax event="blur" listener="#{createNewDisciplineBean.setaHoraSemanal}"  />
+				</p:inputText>
+				
+				<h:outputText value="H.Anuais" />
+				<p:inputText  value="#{createNewDisciplineBean.horasAnuais}" rendered="true" requiredMessage="Favor informar carga horaria anual da disciplina">
+					<p:ajax event="blur" listener="#{createNewDisciplineBean.setaHoraAnual}" />
+				</p:inputText>
+
+
+				<h:outputText value="Turno: " />
+				<p:selectOneMenu value="#{createNewDisciplineBean.turno}">
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItem itemLabel="Noite" itemValue="Noite" />
+					<f:selectItem itemLabel="Integral" itemValue="Integral" />
+
+				</p:selectOneMenu>
+
+
+				<p:commandButton  value="Salvar Disciplina" actionListener="#{createNewDisciplineBean.createDicipline}" oncomplete="dlg_disciplina_new.hide()" ></p:commandButton>
+				<p:button value="Cancelar" event="click" onevent="dlg_disciplina.hide()"></p:button>
+
+			</h:panelGrid>
+
+
+
+
+
+
+
+
+
+		</p:dialog>
+	</h:form>
+
+</h:body>
+</html>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="templateTeacher.xhtml">
+
+	<ui:define name="centro">
+
+		<script type="text/javascript">
+			function start() {
+				PF('statusDialog').show();
+			}
+
+			function stop() {
+				PF('statusDialog').hide();
+			}
+		</script>
+
+
+		<h:form id="form">
+
+			<p:treeTable value="#{downloadMaterialApoioBean.root}" var="document"
+				id="multiSelect"
+				selection="#{downloadMaterialApoioBean.selectedNodes}"
+				selectionMode="checkbox">
+
+				<f:facet name="header">
+            Material de Apoio
+        </f:facet>
+
+				<p:column style="width:150px">
+					<f:facet name="header">
+                Name
+            </f:facet>
+					<h:outputText value="#{document.descrypt}" />
+				</p:column>
+
+				<p:column style="width:100px">
+					<f:facet name="header">
+                Size
+            </f:facet>
+					<h:outputText value="#{document.sise}" />
+				</p:column>
+
+				<p:column style="width:100px">
+					<f:facet name="header">
+                Type
+            </f:facet>
+					<h:outputText value="#{document.type}" />
+				</p:column>
+
+				<f:facet name="footer">
+
+					<p:commandButton id="downloadLink" value="Download" ajax="false"
+						actionListener="#{downloadMaterialApoioBean.fileDownloadController}"
+						icon="ui-icon-arrowthichk-s">
+						<p:fileDownload value="#{downloadMaterialApoioBean.file}" />
+					</p:commandButton>
+
+				</f:facet>
+			</p:treeTable>
+
+			<p:dialog id="dialog" header="Document Detail"
+				widgetVar="documentDialog">
+				<p:outputPanel id="documentPanel">
+					<p:dataList value="#{downloadMaterialApoioBean.selectedNodes}"
+						var="selectedNode"
+						rendered="#{not empty downloadMaterialApoioBean.selectedNodes}">
+                #{selectedNode.data.descrypt}
+            </p:dataList>
+				</p:outputPanel>
+			</p:dialog>
+
+		</h:form>
+
+
+
+	</ui:define>
+
+
+
+</ui:composition>
+
+
+
+</html>

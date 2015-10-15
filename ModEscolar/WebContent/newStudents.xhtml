@@ -1,0 +1,681 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="templateAdmin.xhtml">
+	<ui:define name="centro">
+
+		<h:form id="form_upload" enctype="multipart/form-data">
+
+
+			<p:growl id="growl" showDetail="true" life="3000" />
+
+			<p:dialog id="dialog" header="carregar foto" widgetVar="dlg_upload"
+				resizable="true" showEffect="explode" hideEffect="bounce"
+				draggable="true">
+
+				<h:form enctype="multipart/form-data">
+
+					<p:fileUpload
+						fileUploadListener="#{createNewStudentBean.fileUploadAction}"
+						mode="advanced" dragDropSupport="false" 
+						sizeLimit="1000000" fileLimit="1"
+						allowTypes="/(\.|\/)(gif|jpe?g|png)$/" cancelLabel="cancelar"
+						uploadLabel="Iniciar Upload" />
+
+					<p:growl id="messages" showDetail="true" />
+
+				</h:form>
+
+
+
+			</p:dialog>
+		</h:form>
+
+
+
+
+		<h:form enctype="multipart/form-data" id="form_principal"  >
+
+			<p:growl id="growl" sticky="true" showDetail="true" />
+
+			<p:wizard backLabel="Voltar" nextLabel="Avançar"   >
+
+				<p:tab id="indentificacao" title="Identificação">
+
+					<p:panel header="Dados de Indentificação do Educando"  >
+
+						<h:messages errorClass="error" />
+
+						<h:panelGrid columns="5" columnClasses="label, value">
+
+							<h:outputText value="Foto: " />
+							
+							
+						  	<p:graphicImage value="/img/upload.png"
+								onclick="PF('dlg_upload').show()" id="photo"
+								style="cursor:pointer" cache="false" width="125" height="25"  >
+
+		 					</p:graphicImage> 
+		 					
+		 					
+		 				  	
+							
+							
+
+							<h:outputText value="Nome Educando: *" />
+							<p:inputText required="true" value="#{createNewStudentBean.name}" validatorMessage="Nome Educando só pode conter letras" >
+								<f:validateRegex pattern="^[a-zA-ZÁÉÍÓÚÂÊÎÔÛáéíóúâêîôûÇçãõÃÕ\s]+$" />
+							</p:inputText>
+
+
+
+
+						</h:panelGrid>
+
+						<h:panelGrid columns="6" columnClasses="label, value"
+							styleClass="grid">
+
+							<h:outputText value="Data Nascimento: *" />
+							<p:inputMask locale="pt" pattern="dd/MM/yyyy" required="true"
+								label="Data Nascimento" showButtonPanel="true" navigator="true"
+								id="ptCal6" value="#{createNewStudentBean.birthday}" mask="99/99/9999"/>
+
+
+							<h:outputText value="Periodo: " />
+							<p:inputText value="#{createNewStudentBean.periody}" />
+
+
+							<h:outputText value="Nivel de Ensino: " />
+							<p:selectOneMenu value="#{createNewStudentBean.studentScore}" required="true">
+								<f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true" />
+								<f:selectItem itemLabel="Médio" itemValue="EM" />
+								<f:selectItem itemLabel="Médio Inovador" itemValue="EMI" />
+							</p:selectOneMenu>
+
+							<h:outputText value="Serie: " />
+							<p:selectOneMenu value="#{createNewStudentBean.studentGrade}" required="true">
+								<f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true" />
+								<f:selectItem itemLabel="1º" itemValue="1" />
+								<f:selectItem itemLabel="2º" itemValue="2" />
+								<f:selectItem itemLabel="3º" itemValue="3" />
+							</p:selectOneMenu>
+
+							<h:outputText value="Turno: " />
+							<p:selectOneMenu value="#{createNewStudentBean.studentShift}">
+								<f:selectItem itemLabel="Selecione" itemValue="" />
+								<f:selectItem itemLabel="Integral" itemValue="Integral" />
+								<f:selectItem itemLabel="Noturno" itemValue="Noturno" />
+
+							</p:selectOneMenu>
+
+							<h:outputText value="Ano: " />
+							<p:inputText value="#{createNewStudentBean.yearStundent}">
+							</p:inputText>
+								
+
+							<h:outputText value="Sexo: " />
+							<p:selectOneMenu value="#{createNewStudentBean.gen}">
+								<f:selectItem itemLabel="Selecione" itemValue="" />
+								<f:selectItem itemLabel="Masculino" itemValue="M" />
+								<f:selectItem itemLabel="Feminino" itemValue="F" />
+
+							</p:selectOneMenu>
+
+							<h:outputText value="Raça: " />
+							<p:selectOneMenu value="#{createNewStudentBean.race}">
+								<f:selectItem itemLabel="Selecione" itemValue="" />
+								<f:selectItem itemLabel="Branco" itemValue="Branco" />
+								<f:selectItem itemLabel="Negro" itemValue="Negro" />
+								<f:selectItem itemLabel="Mulato" itemValue="Mulato" />
+								<f:selectItem itemLabel="Pardo" itemValue="Pardo" />
+
+							</p:selectOneMenu>
+
+
+
+							<h:outputText value="Estado Civil: " />
+							<p:selectOneMenu value="#{createNewStudentBean.marialState}">
+								<f:selectItem itemLabel="Selecione" itemValue="" />
+								<f:selectItem itemLabel="Solteiro" itemValue="Solteiro" />
+								<f:selectItem itemLabel="Casado" itemValue="Casado" />
+								<f:selectItem itemLabel="Separado" itemValue="Separado" />
+								<f:selectItem itemLabel="Outro" itemValue="Outro" />
+
+							</p:selectOneMenu>
+
+							<h:outputText value="Naturalidade: " />
+							<p:inputText value="#{createNewStudentBean.birthplace}" />
+
+							<h:outputText value="UF: " />
+							<p:selectOneMenu value="#{createNewStudentBean.ufNaturality}">
+								<f:selectItem itemLabel="Selecione" itemValue="" />
+								<f:selectItem itemLabel="PB" itemValue="PB" />
+								<f:selectItem itemLabel="AL" itemValue="AL" />
+								<f:selectItem itemLabel="AP" itemValue="AP" />
+								<f:selectItem itemLabel="AM" itemValue="AM" />
+								<f:selectItem itemLabel="BA" itemValue="BA" />
+								<f:selectItem itemLabel="CE" itemValue="CE" />
+								<f:selectItem itemLabel="ES" itemValue="ES" />
+								<f:selectItem itemLabel="GO" itemValue="GO" />
+								<f:selectItem itemLabel="MT" itemValue="MT" />
+								<f:selectItem itemLabel="MS" itemValue="MS" />
+								<f:selectItem itemLabel="MG" itemValue="MG" />
+								<f:selectItem itemLabel="PA" itemValue="PA" />
+								<f:selectItem itemLabel="PR" itemValue="PR" />
+								<f:selectItem itemLabel="PE" itemValue="PE" />
+								<f:selectItem itemLabel="PI" itemValue="PI" />
+								<f:selectItem itemLabel="RJ" itemValue="RJ" />
+								<f:selectItem itemLabel="RN" itemValue="RN" />
+								<f:selectItem itemLabel="RS" itemValue="RS" />
+								<f:selectItem itemLabel="RO" itemValue="RS" />
+								<f:selectItem itemLabel="RR" itemValue="RS" />
+								<f:selectItem itemLabel="SC" itemValue="SC" />
+								<f:selectItem itemLabel="SP" itemValue="SP" />
+								<f:selectItem itemLabel="SE" itemValue="SE" />
+								<f:selectItem itemLabel="TO" itemValue="TO" />
+
+							</p:selectOneMenu>
+
+							<h:outputText value="Registro de Nascimento: *" />
+							<p:inputText label="Registro de Nascimento" required="true"
+								value="#{createNewStudentBean.civilCertificate}" />
+
+							<h:outputText value="Livro: " />
+							<p:inputText value="#{createNewStudentBean.book}" />
+
+							<h:outputText value="Folha: " />
+							<p:inputText value="#{createNewStudentBean.sheet}" />
+
+							<h:outputText value="Identidade: " />
+							<p:inputText value="#{createNewStudentBean.rgNumber}" />
+
+							<h:outputText value="Orgão expedidor: " />
+							<p:inputText value="#{createNewStudentBean.rgRegistration}" />
+
+							<h:outputText value="Estado Emissor: " />
+							<p:selectOneMenu value="#{createNewStudentBean.stateRg}">
+								<f:selectItem itemLabel="Selecione" itemValue="" />
+								<f:selectItem itemLabel="PB" itemValue="PB" />
+								<f:selectItem itemLabel="AL" itemValue="AL" />
+								<f:selectItem itemLabel="AP" itemValue="AP" />
+								<f:selectItem itemLabel="AM" itemValue="AM" />
+								<f:selectItem itemLabel="BA" itemValue="BA" />
+								<f:selectItem itemLabel="CE" itemValue="CE" />
+								<f:selectItem itemLabel="ES" itemValue="ES" />
+								<f:selectItem itemLabel="GO" itemValue="GO" />
+								<f:selectItem itemLabel="MT" itemValue="MT" />
+								<f:selectItem itemLabel="MS" itemValue="MS" />
+								<f:selectItem itemLabel="MG" itemValue="MG" />
+								<f:selectItem itemLabel="PA" itemValue="PA" />
+								<f:selectItem itemLabel="PR" itemValue="PR" />
+								<f:selectItem itemLabel="PE" itemValue="PE" />
+								<f:selectItem itemLabel="PI" itemValue="PI" />
+								<f:selectItem itemLabel="RJ" itemValue="RJ" />
+								<f:selectItem itemLabel="RN" itemValue="RN" />
+								<f:selectItem itemLabel="RS" itemValue="RS" />
+								<f:selectItem itemLabel="RO" itemValue="RS" />
+								<f:selectItem itemLabel="RR" itemValue="RS" />
+								<f:selectItem itemLabel="SC" itemValue="SC" />
+								<f:selectItem itemLabel="SP" itemValue="SP" />
+								<f:selectItem itemLabel="SE" itemValue="SE" />
+								<f:selectItem itemLabel="TO" itemValue="TO" />
+
+							</p:selectOneMenu>
+
+							<h:outputText value="Titulo de Eleitor: " />
+							<p:inputText value="#{createNewStudentBean.numberVoting}" />
+
+							<h:outputText value="Seção: " />
+							<p:inputText value="#{createNewStudentBean.session}" />
+
+							<h:outputText value="Zona: " />
+							<p:inputText value="#{createNewStudentBean.zone}" />
+
+							<h:outputText value="Estado Titulo: " />
+							<p:selectOneMenu value="#{createNewStudentBean.stateVonting}">
+								<f:selectItem itemLabel="Selecione" itemValue="" />
+
+								<f:selectItem itemLabel="PB" itemValue="PB" />
+								<f:selectItem itemLabel="AL" itemValue="AL" />
+								<f:selectItem itemLabel="AP" itemValue="AP" />
+								<f:selectItem itemLabel="AM" itemValue="AM" />
+								<f:selectItem itemLabel="BA" itemValue="BA" />
+								<f:selectItem itemLabel="CE" itemValue="CE" />
+								<f:selectItem itemLabel="ES" itemValue="ES" />
+								<f:selectItem itemLabel="GO" itemValue="GO" />
+								<f:selectItem itemLabel="MT" itemValue="MT" />
+								<f:selectItem itemLabel="MS" itemValue="MS" />
+								<f:selectItem itemLabel="MG" itemValue="MG" />
+								<f:selectItem itemLabel="PA" itemValue="PA" />
+								<f:selectItem itemLabel="PR" itemValue="PR" />
+								<f:selectItem itemLabel="PE" itemValue="PE" />
+								<f:selectItem itemLabel="PI" itemValue="PI" />
+								<f:selectItem itemLabel="RJ" itemValue="RJ" />
+								<f:selectItem itemLabel="RN" itemValue="RN" />
+								<f:selectItem itemLabel="RS" itemValue="RS" />
+								<f:selectItem itemLabel="RO" itemValue="RS" />
+								<f:selectItem itemLabel="RR" itemValue="RS" />
+								<f:selectItem itemLabel="SC" itemValue="SC" />
+								<f:selectItem itemLabel="SP" itemValue="SP" />
+								<f:selectItem itemLabel="SE" itemValue="SE" />
+								<f:selectItem itemLabel="TO" itemValue="TO" />
+
+							</p:selectOneMenu>
+
+							<h:outputText value="Carteira de Trabalho: " />
+							<p:inputText value="#{createNewStudentBean.ctps}" />
+
+							<h:outputText value="Reservista: " />
+							<p:inputText value="#{createNewStudentBean.reservist}" />
+
+
+						</h:panelGrid>
+
+
+					</p:panel>
+				</p:tab>
+
+				<p:tab id="filiação" title="Filiação">
+					<p:panel header="Filiação e outros dados">
+
+						<h:messages errorClass="error" />
+
+						<h:panelGrid columns="7" columnClasses="label, value">
+							<h:outputText value="Nome do Pai: *" />
+							<p:inputText required="true" size="60"
+								value="#{createNewStudentBean.nameFather}" validatorMessage="Nome Pai só pode conter letras" >
+								<f:validateRegex pattern="^[a-zA-ZÁÉÍÓÚÂÊÎÔÛáéíóúâêîôûÇçãõÃÕ\s]+$" />
+							</p:inputText>
+
+							<h:outputText value="Vivo:    " />
+
+							<h:outputText value="Sim: " />
+							<p:selectBooleanCheckbox
+								value="#{createNewStudentBean.fatherlife}"></p:selectBooleanCheckbox>
+
+							<h:outputText value="Não: " />
+							<p:selectBooleanCheckbox
+								value="#{createNewStudentBean.fatherNotlife}"></p:selectBooleanCheckbox>
+
+							<h:outputText value="Nome da Mâe: *" />
+							<p:inputText required="true" size="60"
+								value="#{createNewStudentBean.nameMather}" validatorMessage="Nome Mãe só pode conter letras" >
+								<f:validateRegex pattern="^[a-zA-ZÁÉÍÓÚÂÊÎÔÛáéíóúâêîôûÇçãõÃÕ\s]+$" />
+							</p:inputText>
+
+							<h:outputText value="Vivo:   " />
+
+							<h:outputText value="Sim: " />
+							<p:selectBooleanCheckbox
+								value="#{createNewStudentBean.nameMatherlive}"></p:selectBooleanCheckbox>
+
+							<h:outputText value="Não: " />
+							<p:selectBooleanCheckbox
+								value="#{createNewStudentBean.nameMatherNotlive}"></p:selectBooleanCheckbox>
+
+
+						</h:panelGrid>
+
+						<h:panelGrid columns="6" columnClasses="label, value">
+							<h:outputText value="Orgão Previdenciário: " />
+							<p:inputText value="#{createNewStudentBean.previdency}" />
+
+							<h:outputText value="N de Irmãos que estudam: " />
+							<p:inputText value="#{createNewStudentBean.nBrother}" />
+
+							<h:outputText value="N de Irmãos que estudam com bolsa: " />
+							<p:inputText value="#{createNewStudentBean.nBrotherBag}" />
+
+							<h:outputText value="Profissão: " />
+							<p:inputText value="#{createNewStudentBean.profession}" />
+
+							<h:outputText value="Endereço Profissional: " />
+							<p:inputText value="#{createNewStudentBean.businessAddress}" />
+
+							<h:outputText value="Municipio: " />
+							<p:inputText value="#{createNewStudentBean.country}" />
+
+							<h:outputText value="UF: " />
+							<p:selectOneMenu value="#{createNewStudentBean.ufbusiness}">
+								<f:selectItem itemLabel="Selecione" itemValue="" />
+								<f:selectItem itemLabel="PB" itemValue="PB" />
+								<f:selectItem itemLabel="AL" itemValue="AL" />
+								<f:selectItem itemLabel="AP" itemValue="AP" />
+								<f:selectItem itemLabel="AM" itemValue="AM" />
+								<f:selectItem itemLabel="BA" itemValue="BA" />
+								<f:selectItem itemLabel="CE" itemValue="CE" />
+								<f:selectItem itemLabel="ES" itemValue="ES" />
+								<f:selectItem itemLabel="GO" itemValue="GO" />
+								<f:selectItem itemLabel="MT" itemValue="MT" />
+								<f:selectItem itemLabel="MS" itemValue="MS" />
+								<f:selectItem itemLabel="MG" itemValue="MG" />
+								<f:selectItem itemLabel="PA" itemValue="PA" />
+								<f:selectItem itemLabel="PR" itemValue="PR" />
+								<f:selectItem itemLabel="PE" itemValue="PE" />
+								<f:selectItem itemLabel="PI" itemValue="PI" />
+								<f:selectItem itemLabel="RJ" itemValue="RJ" />
+								<f:selectItem itemLabel="RN" itemValue="RN" />
+								<f:selectItem itemLabel="RS" itemValue="RS" />
+								<f:selectItem itemLabel="RO" itemValue="RS" />
+								<f:selectItem itemLabel="RR" itemValue="RS" />
+								<f:selectItem itemLabel="SC" itemValue="SC" />
+								<f:selectItem itemLabel="SP" itemValue="SP" />
+								<f:selectItem itemLabel="SE" itemValue="SE" />
+								<f:selectItem itemLabel="TO" itemValue="TO" />
+
+							</p:selectOneMenu>
+
+							<h:outputText value="Telefone: " />
+							<p:inputText value="#{createNewStudentBean.fone}" />
+
+							<h:outputText value="Email: " />
+							<p:inputText value="#{createNewStudentBean.email}" />
+
+
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+
+				<p:tab id="responsavel" title="Responsável">
+					<p:panel header="Informaçõs do Responsável">
+
+						<h:messages errorClass="error" />
+
+						<h:panelGrid columns="2" columnClasses="label, value">
+							<h:outputText value="Nome do Responsável: *" />
+							<p:inputText required="true" label="Nome do Responsável"
+								size="60" value="#{createNewStudentBean.nameResponsability}" validatorMessage="Nome Responsável só pode conter letras" >
+								<f:validateRegex pattern="^[a-zA-ZÁÉÍÓÚÂÊÎÔÛáéíóúâêîôûÇçãõÃÕ\s]+$" />
+							</p:inputText>
+
+							<h:outputText value="Endereço: " />
+							<p:inputText size="60"
+								value="#{createNewStudentBean.adressResponsability}" />
+
+
+						</h:panelGrid>
+
+						<h:panelGrid columns="6" columnClasses="label, value">
+
+
+							<h:outputText value="Idade: " />
+							<p:inputText size="15"
+								value="#{createNewStudentBean.ageResponsability}" />
+
+							<h:outputText value="Municipio: " />
+							<p:inputText
+								value="#{createNewStudentBean.countryResponsability}" />
+
+							<h:outputText value="UF: " />
+							<p:selectOneMenu value="#{createNewStudentBean.ufResponsability}">
+								<f:selectItem itemLabel="Selecione" itemValue="" />
+								<f:selectItem itemLabel="PB" itemValue="PB" />
+								<f:selectItem itemLabel="AL" itemValue="AL" />
+								<f:selectItem itemLabel="AP" itemValue="AP" />
+								<f:selectItem itemLabel="AM" itemValue="AM" />
+								<f:selectItem itemLabel="BA" itemValue="BA" />
+								<f:selectItem itemLabel="CE" itemValue="CE" />
+								<f:selectItem itemLabel="ES" itemValue="ES" />
+								<f:selectItem itemLabel="GO" itemValue="GO" />
+								<f:selectItem itemLabel="MT" itemValue="MT" />
+								<f:selectItem itemLabel="MS" itemValue="MS" />
+								<f:selectItem itemLabel="MG" itemValue="MG" />
+								<f:selectItem itemLabel="PA" itemValue="PA" />
+								<f:selectItem itemLabel="PR" itemValue="PR" />
+								<f:selectItem itemLabel="PE" itemValue="PE" />
+								<f:selectItem itemLabel="PI" itemValue="PI" />
+								<f:selectItem itemLabel="RJ" itemValue="RJ" />
+								<f:selectItem itemLabel="RN" itemValue="RN" />
+								<f:selectItem itemLabel="RS" itemValue="RS" />
+								<f:selectItem itemLabel="RO" itemValue="RS" />
+								<f:selectItem itemLabel="RR" itemValue="RS" />
+								<f:selectItem itemLabel="SC" itemValue="SC" />
+								<f:selectItem itemLabel="SP" itemValue="SP" />
+								<f:selectItem itemLabel="SE" itemValue="SE" />
+								<f:selectItem itemLabel="TO" itemValue="TO" />
+
+							</p:selectOneMenu>
+
+							<h:outputText value="Telefone: " />
+							<p:inputText value="#{createNewStudentBean.foneResponsability}" />
+
+							<h:outputText value="Grau de Parentesco: " />
+							<p:selectOneMenu
+								value="#{createNewStudentBean.parentyResponsability}">
+								<f:selectItem itemLabel="Selecione" itemValue="" />
+								<f:selectItem itemLabel="Pai" itemValue="Pai" />
+								<f:selectItem itemLabel="Mâe" itemValue="Mâe" />
+								<f:selectItem itemLabel="Irmão" itemValue="Irmão" />
+								<f:selectItem itemLabel="Irmã" itemValue="Irmã" />
+								<f:selectItem itemLabel="Avô" itemValue="Avô" />
+								<f:selectItem itemLabel="Avó" itemValue="Avó" />
+								<f:selectItem itemLabel="Tio" itemValue="Tio" />
+								<f:selectItem itemLabel="Tia" itemValue="Tia" />
+								<f:selectItem itemLabel="Primo" itemValue="Primo" />
+								<f:selectItem itemLabel="Prima" itemValue="Prima" />
+
+							</p:selectOneMenu>
+
+							<h:outputText value="Renda Familiar: " />
+							<p:inputText value="#{createNewStudentBean.familyIncome}" />
+
+							<h:outputText value="Nivel de Formação: " />
+							<p:selectOneMenu
+								value="#{createNewStudentBean.formationScoreResponsability}">
+								<f:selectItem itemLabel="Selecione" itemValue="" />
+								<f:selectItem itemLabel="Primario" itemValue="3" />
+								<f:selectItem itemLabel="Secundário" itemValue="10" />
+								<f:selectItem itemLabel="Médio" itemValue="2" />
+								<f:selectItem itemLabel="Superior" itemValue="12" />
+							</p:selectOneMenu>
+
+							<h:outputText value="Profissão: " />
+							<p:inputText
+								value="#{createNewStudentBean.profissionResponsability}" />
+
+							<h:outputText value="Endereço Profissional: " />
+							<p:inputText value="#{createNewStudentBean.adressResponsability}" />
+
+							<h:outputText value="Municipio Trabalho: " />
+							<p:inputText
+								value="#{createNewStudentBean.countryResponsability}" />
+
+
+
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+
+
+				<p:tab id="Procedencia" title="Procedência">
+					<p:panel header="Dados Escolares Anteriores">
+
+						<h:messages errorClass="error" />
+
+						<h:panelGrid columns="2" columnClasses="label, value">
+							<h:outputText value="Unidade de Ensino: *" />
+							<p:inputText size="60"
+								value="#{createNewStudentBean.teachingUnit}" />
+
+							<h:outputText value="Endereço: " />
+							<p:inputText size="60"
+								value="#{createNewStudentBean.adressTeachingUnit}" />
+
+
+						</h:panelGrid>
+
+						<h:panelGrid columns="6" columnClasses="label, value">
+
+
+							<h:outputText value="Periodo: " />
+							<p:inputText value="#{createNewStudentBean.periodyTeachingUnit}" />
+
+							<h:outputText value="Ano: " />
+							<p:inputText value="#{createNewStudentBean.yearTeachingUnit}">
+								
+							</p:inputText>
+
+
+							<h:outputText value="Nivel de Ensino: " />
+							<p:selectOneMenu
+								value="#{createNewStudentBean.scoreTeachingUnit}">
+								<f:selectItem itemLabel="Selecione" itemValue="" />
+								<f:selectItem itemLabel="Primario" itemValue="Primario" />
+								<f:selectItem itemLabel="Secundário" itemValue="Secundário" />
+								<f:selectItem itemLabel="Médio" itemValue="Médio" />
+								<f:selectItem itemLabel="Superior" itemValue="Superior" />
+							</p:selectOneMenu>
+
+							<h:outputText value="Municipio: " />
+							<p:inputText value="#{createNewStudentBean.countryTeachingUnit}" />
+
+							<h:outputText value="UF: " />
+							<p:selectOneMenu value="#{createNewStudentBean.ufTeachingUnit}">
+								<f:selectItem itemLabel="Selecione" itemValue="" />
+
+								<f:selectItem itemLabel="PB" itemValue="PB" />
+								<f:selectItem itemLabel="AL" itemValue="AL" />
+								<f:selectItem itemLabel="AP" itemValue="AP" />
+								<f:selectItem itemLabel="AM" itemValue="AM" />
+								<f:selectItem itemLabel="BA" itemValue="BA" />
+								<f:selectItem itemLabel="CE" itemValue="CE" />
+								<f:selectItem itemLabel="ES" itemValue="ES" />
+								<f:selectItem itemLabel="GO" itemValue="GO" />
+								<f:selectItem itemLabel="MT" itemValue="MT" />
+								<f:selectItem itemLabel="MS" itemValue="MS" />
+								<f:selectItem itemLabel="MG" itemValue="MG" />
+								<f:selectItem itemLabel="PA" itemValue="PA" />
+								<f:selectItem itemLabel="PR" itemValue="PR" />
+								<f:selectItem itemLabel="PE" itemValue="PE" />
+								<f:selectItem itemLabel="PI" itemValue="PI" />
+								<f:selectItem itemLabel="RJ" itemValue="RJ" />
+								<f:selectItem itemLabel="RN" itemValue="RN" />
+								<f:selectItem itemLabel="RS" itemValue="RS" />
+								<f:selectItem itemLabel="RO" itemValue="RS" />
+								<f:selectItem itemLabel="RR" itemValue="RS" />
+								<f:selectItem itemLabel="SC" itemValue="SC" />
+								<f:selectItem itemLabel="SP" itemValue="SP" />
+								<f:selectItem itemLabel="SE" itemValue="SE" />
+								<f:selectItem itemLabel="TO" itemValue="TO" />
+
+							</p:selectOneMenu>
+
+							<h:outputText value="Telefone: " />
+							<p:inputText value="#{createNewStudentBean.foneTeachingUnit}" />
+
+
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+
+				<p:tab id="Outras" title="Outras Informações">
+					<p:panel header="Informações Extras ">
+						<h:outputText value="Dados educação Fisica"></h:outputText>
+						<br />
+						<p:separator></p:separator>
+						<br />
+						<h:panelGrid columns="2" columnClasses="label, value">
+							<p:inputTextarea rows="6" cols="60"
+								value="#{createNewStudentBean.fisicyEducation}" />
+						</h:panelGrid>
+						<br />
+						<h:outputText value="Atividades Extra Classe"></h:outputText>
+						<br />
+						<p:separator></p:separator>
+						<br />
+
+						<h:panelGrid columns="4" columnClasses="label, value">
+
+							<h:outputText value="Esporte: " />
+							<p:inputText size="60" value="#{createNewStudentBean.sport}" />
+
+							<h:outputText value="Cultura: " />
+							<p:inputText size="60" value="#{createNewStudentBean.cultura}" />
+
+							<h:outputText value="Arte: " />
+							<p:inputText size="60" value="#{createNewStudentBean.arts}" />
+
+							<h:outputText value="Outras: " />
+							<p:inputText size="60" value="#{createNewStudentBean.outh}" />
+
+						</h:panelGrid>
+
+						<h:outputText value="Dados de Transporte Escolar"></h:outputText>
+						<br />
+						<p:separator></p:separator>
+						<br />
+
+						<h:panelGrid columns="3" columnClasses="label, value">
+
+							<h:outputText value="Região onde Reside: " />
+							<p:selectBooleanCheckbox itemLabel="Rural"
+								value="#{createNewStudentBean.rural}" />
+							<p:selectBooleanCheckbox itemLabel="Urbana"
+								value="#{createNewStudentBean.urbano}" />
+
+							<h:outputText value="Utiliza Transporte Escolar: " />
+							<p:selectBooleanCheckbox itemLabel="Sim"
+								value="#{createNewStudentBean.transportationYes}" />
+							<p:selectBooleanCheckbox itemLabel="Não"
+								value="#{createNewStudentBean.transportationNo}" />
+
+							<h:outputText
+								value="Pode Utilizar a Bicicleta em Substituição ao Transporte Escolar: " />
+							<p:selectBooleanCheckbox itemLabel="Sim"
+								value="#{createNewStudentBean.libraryYes}" />
+							<p:selectBooleanCheckbox itemLabel="Não"
+								value="#{createNewStudentBean.libraryNo}" />
+
+
+						</h:panelGrid>
+
+
+
+					</p:panel>
+				</p:tab>
+
+				<p:tab id="confirm" title="Confirmação">
+					<p:panel header="Confirmação">
+
+						<h:panelGrid id="confirmação" columns="6">
+						<h:outputText value="Matriculado?" />
+						
+						<p:selectOneMenu
+								value="#{createNewStudentBean.active}">
+								<f:selectItem itemLabel="Sim" itemValue="1" />
+								<f:selectItem itemLabel="Não" itemValue="0" />
+						</p:selectOneMenu>
+						
+							
+						</h:panelGrid>
+
+
+						<p:commandButton value="Salvar Aluno"
+							actionListener="#{createNewStudentBean.createStudent}"
+							update="growl" oncomplete="loadStudentsList()">
+							<f:param id="idsession" name="idsession"
+								value="#{loginBean.session}" />
+						</p:commandButton>
+
+					</p:panel>
+				</p:tab>
+
+			</p:wizard>
+
+
+
+		</h:form>
+		
+		<ui:include src="newUser.xhtml">
+		
+		</ui:include>
+
+	</ui:define>
+</ui:composition>
+
+</html>

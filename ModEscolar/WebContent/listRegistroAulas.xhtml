@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="templateTeacher.xhtml">
+
+	<ui:define name="centro">
+
+
+
+		<h:form>
+
+			<p:growl id="messages" />
+
+			<p:menubar>
+				<p:submenu label="Confirações" icon="ui-icon-document">
+
+					<p:menuitem value="Turmas" url="#" />
+					<p:separator />
+					<p:menuitem value="Outras" url="#" />
+
+
+				</p:submenu>
+
+				<f:facet name="options">
+					<p:outputLabel value="BEM VINDO: " style="margin-right:15px" />
+					<p:outputLabel value="#{loginBean.username}"
+						style="margin-right:10px" />
+					<p:commandButton type="button" value="Sair" icon="ui-icon-extlink"
+						onclick="sair()" />
+				</f:facet>
+			</p:menubar>
+
+
+
+		</h:form>
+
+		<h:form id="form_list_discipline">
+
+			<p:dataTable var="disc"
+				value="#{listRegistroDeAulaBean.registroDeAula}" rowKey="#{disc.id}"
+				paginator="true" rows="20"
+				selection="#{listRegistroDeAulaBean.selectedRegistroDeAula}"
+				selectionMode="single"
+				filteredValue="#{listRegistroDeAulaBean.filteredRegistroDeAula}"
+				id="carsTable">
+
+				<p:ajax event="rowSelect" update=":form_list_discipline:display"
+					oncomplete="carDialog.show()" />
+
+				<f:facet name="header">  
+             Registros de Aula Cadastrados  
+                </f:facet>
+
+				<p:column headerText="Conteúdo" sortBy="objetosDeConhecimento"
+					filterBy="objetosDeConhecimento" id="objetosDeConhecimento">  
+            #{disc.objetosDeConhecimento}  
+        </p:column>
+
+				<p:column headerText="Atividade" sortBy="habilidades"
+					filterBy="habilidades" id="habilidades">  
+            #{disc.habilidades}  
+        </p:column>
+
+				<p:column headerText="Grau" sortBy="grau" filterBy="grau" id="grau">  
+            #{disc.grau}  
+        
+        </p:column>
+
+		<p:column headerText="Serie" sortBy="serie" filterBy="serie"
+					id="serie">  
+            #{disc.serie}  
+        </p:column>
+        
+        <p:column headerText="turma" sortBy="turma" filterBy="turma"
+					id="turma">  
+            #{disc.turma}  
+        </p:column>
+
+		<p:column headerText="Data" sortBy="dataRegistro" filterBy="dataRegistro" id="dataRegistro" >  
+            #{disc.dataRegistro}  
+        </p:column>
+
+			</p:dataTable>
+
+			<p:dialog header="Registros Detalhes" widgetVar="carDialog"
+				resizable="false"  showEffect="explode"
+				hideEffect="explode">
+
+				
+
+						<h:panelGrid columns="1" cellpadding="5" id="display">
+
+							<h:outputText value="Conteúdo: " />
+
+							<p:inputTextarea rows="6" cols="50"
+								value="#{listRegistroDeAulaBean.selectedRegistroDeAula.objetosDeConhecimento}" />
+
+
+							<h:outputText value="Atividade Trabalhada: " />
+
+							<p:inputTextarea rows="6" cols="50"
+								value="#{listRegistroDeAulaBean.selectedRegistroDeAula.habilidades}" />
+
+						</h:panelGrid>
+
+
+						<h:panelGrid columns="2" cellpadding="5">
+
+							<h:outputText value="Data :"></h:outputText>
+
+							<p:calendar value="#{listRegistroDeAulaBean.selectedRegistroDeAula.dataRegistro}"
+								id="popupButtonCal" showOn="button" pattern="dd/MM/yyyy" />
+
+
+							<h:outputText value="Turma :"></h:outputText>
+
+							<p:selectOneMenu value="#{listRegistroDeAulaBean.selectedRegistroDeAula.turma}"
+								label="Turma">
+
+								
+								<f:selectItem itemLabel="TURMA" itemValue="" itemDisabled="true" />
+								<f:selectItem itemLabel="A" itemValue="A" />
+								<f:selectItem itemLabel="B" itemValue="B" />
+								<f:selectItem itemLabel="C" itemValue="C" />
+								<f:selectItem itemLabel="D" itemValue="D" />
+								<f:selectItem itemLabel="E" itemValue="E" />
+								<f:selectItem itemLabel="F" itemValue="F" />
+								<f:selectItem itemLabel="G" itemValue="G" />
+
+							</p:selectOneMenu>
+
+
+							<p:commandButton value="Atualizar"
+								actionListener="#{listRegistroDeAulaBean.updateRegistro}"
+								oncomplete="dlg_registro.hide()" >
+							</p:commandButton>
+								
+							<p:commandButton value="Remover"
+								actionListener="#{listRegistroDeAulaBean.removeRegistro}"
+								oncomplete="dlg_registro.hide()" >
+							</p:commandButton>
+								
+							<p:commandButton value="Gerar Relatório"
+								actionListener="#{listRegistroDeAulaBean.gerarRelatorio}"
+								oncomplete="dlg_registro.hide()" ajax="false" >
+							</p:commandButton>
+
+
+						</h:panelGrid>
+
+
+
+
+
+			</p:dialog>
+
+		</h:form>
+
+
+
+
+	</ui:define>
+
+
+
+</ui:composition>
+
+
+
+</html>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="templateAdmin.xhtml">
+
+	<ui:define name="centro">
+
+		<p:panel header="Material de Apoio">
+
+			<h:form enctype="multipart/form-data">
+
+				<p:fileUpload
+					fileUploadListener="#{uploadMaterialDeApoioBean.fileUploadAction}"
+					mode="advanced" dragDropSupport="false" fileLimit="1"
+					cancelLabel="cancelar" uploadLabel="Iniciar Upload" />
+
+				<p:growl id="messages" showDetail="true" />
+
+
+				<p:separator></p:separator>
+
+
+
+
+				<p:selectOneMenu value="#{uploadMaterialDeApoioBean.nucleos}">
+
+					<p:ajax event="change" update="d"
+						listener="#{uploadMaterialDeApoioBean.handleCityChange}" />
+
+					<f:selectItem itemLabel="Selecine Nucleo" itemValue="ok" />
+					<f:selectItem itemLabel="LINGUAGENS, CÓDIGO E SUAS TECNOLOGIAS"
+						itemValue="LCT" />
+					<f:selectItem itemLabel="CIÊNCIAS DA NATUREZA E SUAS TECNOLOGIAS"
+						itemValue="CNT" />
+					<f:selectItem itemLabel="MATEMÁTICA E SUAS TECNOLOGIAS"
+						itemValue="MT" />
+					<f:selectItem itemLabel="CIÊNCIAS HUMANAS E SUAS TECNOGIAS"
+						itemValue="CHT" />
+					<f:selectItem itemLabel="PARTE DIVERSIFICADA" itemValue="PD" />
+					<f:selectItem itemLabel="MACROCAMPOS" itemValue="MACRO" />
+					<f:selectItem itemLabel="OUTROS" itemValue="OUTROS" />
+
+				</p:selectOneMenu>
+
+				<p:spacer width="15"></p:spacer>
+
+				<p:selectOneMenu id="d" value="#{uploadMaterialDeApoioBean.disci} ">
+
+					<f:selectItem itemLabel="Selecione Disciplina" itemValue="" />
+					<f:selectItems value="#{uploadMaterialDeApoioBean.disciplinas}" />
+
+				</p:selectOneMenu>
+
+			</h:form>
+
+
+		</p:panel>
+
+
+
+
+
+	</ui:define>
+
+
+
+</ui:composition>
+
+
+
+</html>

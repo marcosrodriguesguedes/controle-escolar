@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="templateAdmin.xhtml">
+
+	<ui:define name="centro">
+
+		<ui:include src="newUser.xhtml"></ui:include>
+		<ui:include src="newDiscipline.xhtml"></ui:include>
+
+		<h:form>
+
+			<p:growl id="messages" />
+
+			<p:breadCrumb>
+				<p:menuitem value="INICIO" onclick="homeAdm()" />
+				<p:menuitem value="INICIO" onclick="homeAdm()" />
+				<p:menuitem value="SAIR" onclick="sair()" />
+
+			</p:breadCrumb>
+
+
+
+		</h:form>
+
+		<h:form id="form_list_discipline">
+
+			<p:dataTable var="disc" value="#{listDiciplinesBean.disciplines}"
+				rowKey="#{disc.id}" paginator="true" rows="20"
+				selection="#{listDiciplinesBean.selectedDiscipline}"
+				selectionMode="single"
+				filteredValue="#{listDiciplinesBean.filteredDiscipline}"
+				id="carsTable">
+
+				<p:ajax event="rowSelect" update=":form_list_discipline:display"
+					oncomplete="carDialog.show()"    />
+
+				<f:facet name="header">  
+             Disciplinas Cadastradas  
+                </f:facet>
+
+				<p:column headerText="Nome" sortBy="name" filterBy="name" id="name">  
+            #{disc.name}  
+        </p:column>
+
+				<p:column headerText="Serie" sortBy="grade" filterBy="grade"
+					id="grade">  
+            #{disc.grade}  
+        </p:column>
+
+				<p:column headerText="Grau" sortBy="grade2" filterBy="grade2"
+					id="grade2">  
+            #{disc.grade2}  
+        
+        </p:column>
+
+				<p:column headerText="Area" sortBy="area" filterBy="area" id="area">  
+            #{disc.area}  
+        </p:column>
+
+				<p:column headerText="H-Semana" sortBy="hoursPerWeek"
+					filterBy="hoursPerWeek" id="hoursPerWeek">  
+            #{disc.hoursPerWeek}  
+        </p:column>
+
+			</p:dataTable>
+
+			<p:dialog header="Disciplina Detalhes" widgetVar="carDialog"
+				resizable="treu" showEffect="explode" hideEffect="explode">
+
+				<p:tabView id="display">
+
+					<p:tab title="Disciplina">
+
+
+
+						<h:panelGrid columns="2" cellpadding="10">
+
+							<h:outputText value="Área: " />
+							<p:selectOneMenu
+								value="#{listDiciplinesBean.selectedDiscipline.area}"
+								>
+								<f:selectItem itemLabel="" itemValue="" />
+								
+								<f:selectItem itemLabel="Ciências Humanas e suas Tecnologias"
+									itemValue="CHT" />
+								<f:selectItem itemLabel="Matemática e suas Tecnologias"
+									 itemValue="MT" />
+								<f:selectItem
+									itemLabel="Ciências da Natureza, Matemática e suas Tecnologias"
+									itemValue="CNMT" />
+								<f:selectItem itemLabel="Linguagens, Códigos e suas Tecnologias"
+									itemValue="LCT" />
+
+							</p:selectOneMenu>
+
+							<h:outputText value="Nome: " />
+							<p:selectOneMenu
+								value="#{listDiciplinesBean.selectedDiscipline.name}">
+								<f:selectItem itemLabel="Selecione" itemValue="" />
+								<f:selectItems value="#{createNewDisciplineBean.areaCHT}" />
+							</p:selectOneMenu>
+
+							<h:outputText value="Grau:"></h:outputText>
+							<p:selectOneMenu
+								value="#{listDiciplinesBean.selectedDiscipline.grade2}">
+								<f:selectItem itemLabel="Selecione" itemValue="" />
+								<f:selectItem itemLabel="Médio" itemValue="EM" />
+								<f:selectItem itemLabel="Médio Inovador" itemValue="EMI" />
+							</p:selectOneMenu>
+
+							<h:outputText value="Serie: " />
+							<p:selectOneMenu
+								value="#{listDiciplinesBean.selectedDiscipline.grade}">
+
+								<f:selectItem itemLabel="1º" itemValue="1" />
+								<f:selectItem itemLabel="2º" itemValue="2" />
+								<f:selectItem itemLabel="3º" itemValue="3" />
+							</p:selectOneMenu>
+
+						</h:panelGrid>
+
+
+
+
+						<h:panelGrid columns="4" cellpadding="10">
+
+
+
+
+							<p:commandButton value="Atualizar"
+								actionListener="#{listDiciplinesBean.updateDiscipline}"
+								oncomplete="carDialog.hide()" update=":form_list_discipline"
+								style='background:#009899; margin-left:5%; color:#ffffff'></p:commandButton>
+
+
+							<p:commandButton value="Remover"
+								actionListener="#{listDiciplinesBean.removeDiscipline}"
+								oncomplete="carDialog.hide()" update=":form_list_discipline"
+								style='background:#009899; margin-left:5%; color:#ffffff'>
+								<p:confirm header="Confirmação"
+									message="Esta ação não pode ser desfeita, deseja continuar?"
+									icon="ui-icon-alert" />
+							</p:commandButton>
+
+							<p:confirmDialog global="true" showEffect="fade"
+								hideEffect="explode" >
+								<p:commandButton value="Yes" type="button"
+									styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+								<p:commandButton value="No" type="button"
+									styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+							</p:confirmDialog>
+
+
+
+						</h:panelGrid>
+
+
+					</p:tab>
+
+
+
+
+				</p:tabView>
+
+
+
+
+
+			</p:dialog>
+
+		</h:form>
+
+
+
+
+	</ui:define>
+
+
+
+</ui:composition>
+
+
+
+</html>

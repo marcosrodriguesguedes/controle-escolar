@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="templateAdmin.xhtml">
+
+	<ui:define name="centro">
+
+		<ui:include src="newUser.xhtml"></ui:include>
+		<ui:include src="newDiscipline.xhtml"></ui:include>
+
+		<h:form>
+
+			<p:growl id="messages" />
+
+			<p:breadCrumb>
+				<p:menuitem value="INICIO" onclick="homeAdm()" />
+				<p:menuitem value="INICIO" onclick="homeAdm()" />
+				<p:menuitem value="SAIR" onclick="sair()" />
+
+			</p:breadCrumb>
+
+
+
+		</h:form>
+
+		<h:form id="form_list_turmas">
+
+			<p:dataTable var="disc" value="#{listTurmasConfig.turmas}"
+				rowKey="#{disc.id}" paginator="true" rows="20"
+				selection="#{listTurmasConfig.selectedTurma}" selectionMode="single"
+				filteredValue="#{listTurmasConfig.filteredTurma}" id="carsTable">
+
+				<p:ajax event="rowSelect" update=":form_list_turmas:display"
+					oncomplete="carDialog.show()" />
+
+				<f:facet name="header">  
+             Turmas Cadastrados  
+                </f:facet>
+
+				<p:column headerText="Serie" sortBy="serie" filterBy="serie"
+					id="serie">  
+            #{disc.serie}  
+        </p:column>
+
+				<p:column headerText="Grau" sortBy="grau" filterBy="grau" id="grau">  
+            #{disc.grau}  
+        </p:column>
+
+				<p:column headerText="Turma" sortBy="turma" filterBy="turma"
+					id="turma">  
+            #{disc.turma}  
+        
+        </p:column>
+
+				<p:column headerText="AnoLetivo" sortBy="anoLetivo"
+					filterBy="anoLetivo" id="anoLetivo">  
+            #{disc.anoLetivo}  
+        </p:column>
+
+				<p:column headerText="Número de Alunos Atual" sortBy="numeroAlunoAtual"
+					filterBy="numeroAlunoAtual" id="numeroAlunoAtual">  
+            #{disc.numeroAlunoAtual}  
+        </p:column>
+
+				<p:column headerText="Número Máximo Alunos" sortBy="numeroMaxAlunosTurma"
+					filterBy="numeroMaxAlunosTurma" id="numeroMaxAlunosTurma">  
+            #{disc.numeroMaxAlunosTurma}  
+        </p:column>
+
+
+			</p:dataTable>
+
+			<p:dialog header="Usuários Detalhes" widgetVar="carDialog"
+				resizable="treu" showEffect="explode" hideEffect="explode">
+
+				<p:tabView id="display">
+
+					<p:tab title="Turma">
+
+
+						<h:panelGrid columns="2" cellpadding="10">
+
+
+							<h:outputText value="Número Máximo de Alunos na Turma: " />
+
+							<p:inputText value="#{listTurmasConfig.selectedTurma.numeroMaxAlunosTurma}"></p:inputText>
+
+
+							
+
+							</p:inputText>
+
+
+							
+
+						</h:panelGrid>
+
+
+
+
+						<h:panelGrid columns="4" cellpadding="10">
+
+
+
+
+							<p:commandButton value="Atualizar"
+								actionListener="#{listTurmasConfig.updateTurma}"
+								oncomplete="carDialog.hide()" update=":form_list_discipline"
+								style='background:#009899; margin-left:5%; color:#ffffff'></p:commandButton>
+
+
+							<p:commandButton value="Remover"
+								actionListener="#{listTurmasConfig.removerUsuario.removeTurma}"
+								oncomplete="carDialog.hide()" update=":form_list_discipline"
+								style='background:#009899; margin-left:5%; color:#ffffff'>
+								<p:confirm header="Confirmação"
+									message="Esta ação não pode ser desfeita, deseja continuar?"
+									icon="ui-icon-alert" />
+							</p:commandButton>
+
+							<p:confirmDialog global="true" showEffect="fade"
+								hideEffect="explode">
+								<p:commandButton value="Sim" type="button"
+									styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+								<p:commandButton value="Não" type="button"
+									styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+							</p:confirmDialog>
+
+
+
+						</h:panelGrid>
+
+
+					</p:tab>
+
+
+
+
+				</p:tabView>
+
+
+
+
+
+			</p:dialog>
+
+		</h:form>
+
+
+
+
+	</ui:define>
+
+
+
+</ui:composition>
+
+
+
+</html>

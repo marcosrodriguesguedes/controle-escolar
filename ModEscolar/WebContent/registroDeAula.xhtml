@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+   
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/css/default.css" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/css/principal.css" />
+
+</h:head>
+<h:body>
+
+	<h:form id="form_upload">
+
+          
+		
+
+		<p:dialog id="dialog_registro" header="Novo Registro de Aula"
+			widgetVar="dlg_registro" resizable="true" showEffect="explode"
+			hideEffect="bounce" draggable="true">
+			
+			<p:growl id="msg" showDetail="true" life="3000" />
+
+
+			<h:panelGrid columns="1" cellpadding="5">
+
+				<h:outputText value="Conteúdo: " />
+				
+				<p:inputTextarea rows="6" cols="50" value="#{registroDeAulasBean.conteudo}" />  
+				
+				
+				<h:outputText value="Atividade Trabalhada: " />
+				
+				<p:inputTextarea rows="6" cols="50" value="#{registroDeAulasBean.atividade}" /> 
+
+			</h:panelGrid>
+			
+
+			<h:panelGrid columns="2" cellpadding="5">
+
+				<h:outputText value="Data :"></h:outputText>
+				
+				<p:calendar value="#{registroDeAulasBean.dataRegistro}" id="popupButtonCal" showOn="button" pattern="dd/MM/yyyy" />
+				
+				  
+				<h:outputText value="Turma :"></h:outputText>
+				
+				<p:selectOneMenu value="#{registroDeAulasBean.turma}" label="Turma" >
+    			   	
+    			    <p:ajax event="change"  listener="#{registroDeAulasBean.subjectSelectionChanged}" />
+    			   	
+    			   	<f:selectItem itemLabel="TURMA" itemValue="" />  
+            		<f:selectItem itemLabel="A" itemValue="A" />  
+           			<f:selectItem itemLabel="B" itemValue="B" />  
+            		<f:selectItem itemLabel="C" itemValue="C" /> 
+            		<f:selectItem itemLabel="D" itemValue="D" />  
+            		<f:selectItem itemLabel="E" itemValue="E" />  
+            		<f:selectItem itemLabel="F" itemValue="F" />  
+            		<f:selectItem itemLabel="G" itemValue="G" />   
+    			
+    			</p:selectOneMenu>
+				
+				
+				<p:commandButton  value="Salvar" actionListener="#{registroDeAulasBean.createRegistro}" oncomplete="dlg_registro.hide()" style='background:#009899; color:#ffffff'></p:commandButton>
+
+
+			</h:panelGrid>
+
+
+
+
+
+
+
+
+
+		</p:dialog>
+	</h:form>
+
+</h:body>
+</html>

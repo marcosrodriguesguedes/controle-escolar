@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="templateTeacher.xhtml">
+
+	<ui:define name="centro">
+
+
+
+		<h:form id="form_list_discipline">
+
+			<p:dataTable var="disc"
+				value="#{listDiciplinesBean.disciplinesTeacher}" 
+				selectionMode="single"
+				rowKey="#{disc.id}"
+				paginator="true" rows="10"
+				selection="#{listDiciplinesBean.selectedDiscipline}"
+				filteredValue="#{listDiciplinesBean.filteredDiscipline}"
+				id="carsTable" >
+
+				<p:ajax event="rowSelect" listener="#{listDiciplinesBean.onRowSelect}"/>
+				
+				
+				<f:facet name="header">  
+             Disciplinas do Professor  
+                </f:facet>
+
+				<p:column headerText="Nome" sortBy="name" filterBy="name" id="name">  
+            #{disc.name}  
+        </p:column>
+
+				<p:column headerText="Serie"  
+					id="grade">  
+            #{disc.grade}  
+        </p:column>
+
+				<p:column headerText="Grau"  
+					id="grade2">  
+            #{disc.grade2}  
+        
+        </p:column>
+
+				<p:column headerText="Area"   id="area">  
+            #{disc.area}  
+        </p:column>
+
+				<p:column headerText="H-Semana" 
+					 id="hoursPerWeek">  
+            #{disc.hoursPerWeek}  
+        </p:column>
+        
+        <f:facet name="footer">  
+           <p:graphicImage value="/img/notas.png" onclick="loadNotasEm()"
+				style="cursor:pointer" >
+			</p:graphicImage>
+        </f:facet>  
+        
+        <f:facet name="footer">  
+           
+            <p:graphicImage value="/img/registro_de_aulas.png" onclick="PF('dlg_registro').show()"
+				style="cursor:pointer">
+			</p:graphicImage>
+       
+        </f:facet> 
+        
+        <f:facet name="footer">  
+            <p:graphicImage value="/img/frequencia.png" onclick="loadFrequencia()"
+				style="cursor:pointer">
+			</p:graphicImage>
+        </f:facet> 
+        
+        
+        <f:facet name="footer">  
+            <p:graphicImage value="/img/planejamento.png" onclick="loadEquipes()"
+				style="cursor:pointer">
+			</p:graphicImage>
+        </f:facet> 
+
+			</p:dataTable>
+
+		</h:form>
+
+
+
+      <ui:include src="registroDeAula.xhtml"></ui:include>
+      
+      
+
+	</ui:define>
+
+    
+
+</ui:composition>
+
+
+
+</html>

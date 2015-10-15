@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<title>Sistema Escolar</title>
+
+
+
+	<f:viewParam name="sessaoID" value="#{LoginBean.session}" />
+
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/css/default.css" />
+	<link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/css/principal.css" />
+
+</h:head>
+<h:body >
+	<h:form id="form">
+
+		<p:growl id="growl" showDetail="true" sticky="true" life="3000" />
+
+		<p:messages id="messages" showDetail="true" autoUpdate="true"
+			closable="true" />
+
+		<p:dialog id="modalDialog" header="Cadastrar Usuário" widgetVar="dlg2"
+			modal="true" height="200" onShow="center" width="300">
+
+			<h:panelGrid columns="2" cellpadding="5">
+
+				<h:outputLabel value="login:" />
+				<p:inputText label="login" value="#{createNewUserBean.login}">
+				</p:inputText>
+
+				<h:outputText value="Senha:" />
+				<p:password id="inlineFeedback"
+					value="#{createNewUserBean.password}" feedback="true" inline="true"
+					strongLabel="Muito Forte" weakLabel="Fraca" goodLabel="Forte"
+					promptLabel="Digite a senha" />
+
+
+
+				<h:outputText value="Tipo Usuário: " />
+				<p:selectOneMenu value="#{createNewUserBean.typeUser}">
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItem itemLabel="Administrador" itemValue="3" />
+					<f:selectItem itemLabel="Secretário" itemValue="10" />
+					<f:selectItem itemLabel="Professor" itemValue="2" />
+					<f:selectItem itemLabel="Aluno" itemValue="12" />
+				</p:selectOneMenu>
+
+				<p:commandButton value="Cadastrar"
+					actionListener="#{createNewUserBean.saveUser}" update="growl">
+					<f:param id="criarUsuario" name="criarUsuario"
+						value="#{loginBean.session}" />
+				</p:commandButton>
+				<p:button value="Cancelar" onClick="modalDialog.hide()"></p:button>
+
+			</h:panelGrid>
+
+
+		</p:dialog>
+
+
+
+	</h:form>
+
+
+</h:body>
+</html>

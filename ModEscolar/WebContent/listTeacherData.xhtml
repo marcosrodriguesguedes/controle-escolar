@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="templateAdmin.xhtml">
+
+	<ui:define name="centro">
+
+		<ui:include src="newUser.xhtml"></ui:include>
+
+		<ui:include src="confirmeTeacherDiscipline.xhtml"></ui:include>
+
+		<h:form>
+
+
+
+			<p:breadCrumb>
+				<p:menuitem value="INICIO" onclick="homeAdm()" />
+				<p:menuitem value="INICIO" onclick="homeAdm()" />
+				<p:menuitem value="SAIR" onclick="sair()" />
+
+			</p:breadCrumb>
+
+
+
+		</h:form>
+
+		<h:form id="form_list_discipline">
+
+			<p:dataTable var="teac" value="#{listDisciplineTeacherBean.teachers}"
+				rowKey="#{teac.id}" paginator="true" rows="20"
+				selection="#{listDisciplineTeacherBean.selectedTeacher}"
+				selectionMode="single"
+				filteredValue="#{listDisciplineTeacherBean.filteredTeacher}"
+				id="carsTable" emptyMessage="NÃO HÁ PROFESSORES CADASTRADOS NO SISTEMA">
+
+				<p:ajax event="rowSelect" update=":form_list_discipline:display"
+					oncomplete="carDialog.show()"
+					listener="#{listDisciplineTeacherBean.listDisciplineTeacher}" />
+
+				<f:facet name="header">  
+             Professores Cadastrados  
+                </f:facet>
+
+				<p:column headerText="Nome" sortBy="name" filterBy="name" id="name">  
+            #{teac.name}  
+        </p:column>
+
+
+
+			</p:dataTable>
+
+			<p:dialog header="Professores Detalhes" widgetVar="carDialog"
+				resizable="true" width="65%" height="400" showEffect="explode"
+				hideEffect="explode">
+
+				<p:tabView id="display">
+
+					<p:tab id="pessoal" title="Pessoal">
+
+						<p:panel header="Dados Pessoais">
+
+							<h:messages errorClass="error" />
+
+							<h:panelGrid columns="2" columnClasses="label, value">
+
+								<h:outputText value="Nome Completo: *" />
+								<p:inputText required="true" label="nome_professor" size="60"
+									value="#{listDisciplineTeacherBean.selectedTeacher.name}" />
+
+								<h:outputText value="Pai: *" />
+								<p:inputText required="true" label="pai_professor" size="60"
+									value="#{listDisciplineTeacherBean.selectedTeacher.nomeFather}" />
+
+								<h:outputText value="Mãe: *" />
+								<p:inputText required="true" label="mae_professor" size="60"
+									value="#{listDisciplineTeacherBean.selectedTeacher.motherName}" />
+
+							</h:panelGrid>
+
+							<h:panelGrid columns="4" columnClasses="label, value"
+								styleClass="grid">
+								<h:outputText value="Data Nascimento: *" />
+
+								<p:calendar locale="pt" pattern="dd/MM/yyyy" required="true"
+									label="Data Nascimento" showButtonPanel="true" navigator="true"
+									id="ptCal"
+									value="#{listDisciplineTeacherBean.selectedTeacher.birthday}" />
+
+								<h:outputText value="Sexo: " />
+								<p:selectOneMenu
+									value="#{listDisciplineTeacherBean.selectedTeacher.gender}">
+									<f:selectItem itemLabel="Selecione" itemValue="" />
+									<f:selectItem itemLabel="Masculino" itemValue="3" />
+									<f:selectItem itemLabel="Feminino" itemValue="10" />
+
+								</p:selectOneMenu>
+
+								<h:outputText value="Telefone:" />
+								<p:inputText label="telefone_professor"
+									value="#{listDisciplineTeacherBean.selectedTeacher.dddPhoneNumber}" />
+
+								<h:outputText value="CPF:" />
+								<p:inputText required="true" label="cpf_professor"
+									value="#{listDisciplineTeacherBean.selectedTeacher.cpf}" />
+
+								<h:outputText value="PIS/PASEP:" />
+								<p:inputText label="pis_pasep_professor"
+									value="#{listDisciplineTeacherBean.selectedTeacher.numberCTPS}" />
+
+								<h:outputText value="Título de Eleitor:" />
+								<p:inputText label="titulo_professor"
+									value="#{listDisciplineTeacherBean.selectedTeacher.areaElection}" />
+
+								<h:outputText value="RG:" />
+								<p:inputText
+									value="#{listDisciplineTeacherBean.selectedTeacher.rg}" />
+
+								<h:outputText value="Órgão Emissor:" />
+								<p:inputText label="orgao_rg_professor"
+									value="#{listDisciplineTeacherBean.selectedTeacher.complementRg}" />
+
+
+								<h:outputText value="Banco:" />
+								<p:inputText label="banco_professor"
+									value="#{listDisciplineTeacherBean.selectedTeacher.banco}" />
+
+
+								<h:outputText value="Agência" />
+								<p:inputText label="agencia_professor"
+									value="#{listDisciplineTeacherBean.selectedTeacher.agencia}" />
+
+
+								<h:outputText value="Conta:" />
+								<p:inputText label="conta_professor"
+									value="#{listDisciplineTeacherBean.selectedTeacher.conta}" />
+
+								<h:outputText value="Endereço:" />
+								<p:inputText required="true" label="endereco_professor"
+									value="#{listDisciplineTeacherBean.selectedTeacher.addressLine}" />
+
+
+								<h:outputText value="Bairro:" />
+								<p:inputText label="bairro_professor"
+									value="#{listDisciplineTeacherBean.selectedTeacher.district}" />
+
+								<h:outputText value="Complemento:" />
+
+
+								<h:outputText value="CEP:" />
+								<p:inputText label="cep_professor"
+									value="#{listDisciplineTeacherBean.selectedTeacher.cep}" />
+
+
+								<h:outputText value="Cidade:" />
+								<p:inputText label="cidade_professor"
+									value="#{listDisciplineTeacherBean.selectedTeacher.city}" />
+
+								<h:outputText value="UF: " />
+								<p:selectOneMenu
+									value="#{listDisciplineTeacherBean.selectedTeacher.birthplace}">
+									<f:selectItem itemLabel="Selecione" itemValue="" />
+									<f:selectItem itemLabel="PB" itemValue="PB" />
+									<f:selectItem itemLabel="AL" itemValue="AL" />
+									<f:selectItem itemLabel="AP" itemValue="AP" />
+									<f:selectItem itemLabel="AM" itemValue="AM" />
+									<f:selectItem itemLabel="BA" itemValue="BA" />
+									<f:selectItem itemLabel="CE" itemValue="CE" />
+									<f:selectItem itemLabel="ES" itemValue="ES" />
+									<f:selectItem itemLabel="GO" itemValue="GO" />
+									<f:selectItem itemLabel="MT" itemValue="MT" />
+									<f:selectItem itemLabel="MS" itemValue="MS" />
+									<f:selectItem itemLabel="MG" itemValue="MG" />
+									<f:selectItem itemLabel="PA" itemValue="PA" />
+									<f:selectItem itemLabel="PR" itemValue="PR" />
+									<f:selectItem itemLabel="PE" itemValue="PE" />
+									<f:selectItem itemLabel="PI" itemValue="PI" />
+									<f:selectItem itemLabel="RJ" itemValue="RJ" />
+									<f:selectItem itemLabel="RN" itemValue="RN" />
+									<f:selectItem itemLabel="RS" itemValue="RS" />
+									<f:selectItem itemLabel="RO" itemValue="RS" />
+									<f:selectItem itemLabel="RR" itemValue="RS" />
+									<f:selectItem itemLabel="SC" itemValue="SC" />
+									<f:selectItem itemLabel="SP" itemValue="SP" />
+									<f:selectItem itemLabel="SE" itemValue="SE" />
+									<f:selectItem itemLabel="TO" itemValue="TO" />
+
+								</p:selectOneMenu>
+								<h:outputText value="E-Mail:" />
+								<p:inputText label="email_professor"
+									value="#{listDisciplineTeacherBean.selectedTeacher.email}" />
+							</h:panelGrid>
+						</p:panel>
+					</p:tab>
+
+					<p:tab id="address" title="Dados Funcionais">
+						<p:panel header="Dados Funcionais">
+
+							<h:messages errorClass="error" />
+
+							<h:panelGrid columns="2" columnClasses="label, value">
+
+								<h:outputText value="Lotação:" />
+								<p:inputText label="lotacao_professor"
+									value="#{listDisciplineTeacherBean.selectedTeacher.lotacao}" />
+
+								<h:outputText value="Matrícula:" />
+                                <p:inputText label="cidadefuncional_professor"
+									value="#{listDisciplineTeacherBean.selectedTeacher.idTeacher}"/>
+
+
+								<h:outputText value="Cidade:" />
+								<p:inputText label="cidadefuncional_professor"
+									value="#{listDisciplineTeacherBean.selectedTeacher.cidadefuncional}" />
+
+
+								<h:outputText value="Data do Contrato:" />
+								<p:calendar locale="pt" pattern="dd/MM/yyyy" required="true"
+									label="Data Contrato" showButtonPanel="true" navigator="true"
+									id="ptCal2"
+									value="#{listDisciplineTeacherBean.selectedTeacher.dataContrato}" />
+
+
+								<h:outputText value="Data de Admissão:" />
+								<p:calendar locale="pt" pattern="dd/MM/yyyy" required="true"
+									label="Data Admissao" showButtonPanel="true" navigator="true"
+									id="ptCal3"
+									value="#{listDisciplineTeacherBean.selectedTeacher.dateOfAdmission}" />
+
+
+								<p:commandButton value="Atualizar"
+									actionListener="#{listDisciplineTeacherBean.updateTeacher}" update=":form_list_discipline:carsTable" oncomplete="carDialog.hide()">
+
+
+
+								</p:commandButton>
+								
+								
+								<p:commandButton value="Remover"
+									actionListener="#{listDisciplineTeacherBean.removeTeacher}" update=":form_list_discipline:carsTable" oncomplete="carDialog.hide()">
+
+
+
+								</p:commandButton>
+
+
+
+
+							</h:panelGrid>
+						</p:panel>
+					</p:tab>
+
+
+
+
+					<p:tab title="Disciplinas Lecionadas">
+
+
+						
+							<p:dataTable var="disc"
+								value="#{listDisciplineTeacherBean.disciplinesTeacher}"
+								rowKey="#{disc.id}" paginator="true" rows="7"
+								selection="#{listDisciplineTeacherBean.selectedDiscipline}"
+								selectionMode="single"
+								filteredValue="#{listDisciplineTeacherBean.filteredDiscipline}"
+								id="carsTable2">
+
+								<p:ajax event="rowSelect"  />
+
+								<f:facet name="header">  
+             Disciplinas do Professor  
+                </f:facet>
+
+								<p:column headerText="Nome" sortBy="name" filterBy="name"
+									id="name">  
+            #{disc.name}  
+        </p:column>
+
+								<p:column headerText="Serie" sortBy="grade" filterBy="grade"
+									id="grade">  
+            #{disc.grade}  
+        </p:column>
+
+								<p:column headerText="Grau" sortBy="grade2" filterBy="grade2"
+									id="grade2">  
+            #{disc.grade2}  
+        
+        </p:column>
+
+								<p:column headerText="Area" sortBy="area" filterBy="area"
+									id="area">  
+            #{disc.area}  
+        </p:column>
+
+								<p:column headerText="H-Semana" sortBy="hoursPerWeek"
+									filterBy="hoursPerWeek" id="hoursPerWeek">  
+            #{disc.hoursPerWeek}  
+        </p:column>
+
+							</p:dataTable>
+							
+							<p:spacer></p:spacer>
+							
+							<p:commandButton value="Remover Disciplina"
+									actionListener="#{listDisciplineTeacherBean.removeDisciplineTeacher}"  update=":form_list_discipline"  >
+
+
+
+							</p:commandButton>
+							
+							
+
+						
+					
+					
+					
+					
+					</p:tab>
+
+
+					<p:tab title="Adicionar Disciplina">
+
+						<h:form id="form_list_disciplines">
+
+							<p:dataTable var="disc"
+								value="#{listDisciplineTeacherBean.disciplines}"
+								rowKey="#{disc.id}" paginator="true" rows="7"
+								selection="#{listDisciplineTeacherBean.selectedDiscipline}"
+								selectionMode="single"
+								filteredValue="#{listDisciplineTeacherBean.filteredDiscipline}"
+								id="carsTable">
+
+								<p:ajax event="rowSelect" oncomplete="carDialog2.show()" />
+
+
+
+								<f:facet name="header">  
+            			 			Disciplinas Cadastradas  
+               						</f:facet>
+
+								<p:column headerText="Nome" sortBy="name" filterBy="name"
+									id="name">  
+           					 				#{disc.name}  
+        						</p:column>
+
+								<p:column headerText="Serie" sortBy="grade" filterBy="grade"
+									id="grade">  
+           						 			#{disc.grade}  
+       							 </p:column>
+
+								<p:column headerText="Grau" sortBy="grade2" filterBy="grade2"
+									id="grade2">  
+           							 		#{disc.grade2}  
+        
+        						</p:column>
+
+								<p:column headerText="Area" sortBy="area" filterBy="area"
+									id="area">  
+           								 	#{disc.area}  
+        						</p:column>
+
+								<p:column headerText="H-Semana" sortBy="hoursPerWeek"
+									filterBy="hoursPerWeek" id="hoursPerWeek">  
+            								#{disc.hoursPerWeek}  
+        						</p:column>
+
+
+
+							</p:dataTable>
+
+
+						</h:form>
+
+
+
+					</p:tab>
+
+
+
+
+
+				</p:tabView>
+
+
+
+
+
+			</p:dialog>
+
+
+
+
+		</h:form>
+
+		<h:form id="turmas">
+
+			<p:dialog id="dialogTurmas" widgetVar="turmaDialog" height="50" position="center">
+
+				<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"
+					columnClasses="label, value">
+					<p:outputLabel for="turmas" value="Turmas:" />
+					
+					<p:selectOneListbox id="basic" value="#{controllerTurmasBean.turma}" >
+						<f:selectItems  value="#{controllerTurmasBean.turmas}" ></f:selectItems>
+					</p:selectOneListbox>
+					
+					<p:commandButton value="Adicionar"></p:commandButton>
+					
+					<p:commandButton value="Remover"></p:commandButton>
+
+				</h:panelGrid>
+				
+				
+
+
+
+
+			</p:dialog>
+
+
+
+		</h:form>
+
+		
+
+	</ui:define>
+
+
+
+</ui:composition>
+
+
+
+</html>
+
+
+
+
+
+
+
+
+
